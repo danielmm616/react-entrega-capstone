@@ -1,6 +1,8 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { ChakraProvider } from "@chakra-ui/react";
+import theme from "./services/Theme";
 
 function App() {
   return (
