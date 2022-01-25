@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router-dom";
 import * as yup from "yup";
+import { useAuth } from "../../Providers/AuthContext";
 
 interface UserData {
   name: string;
@@ -26,6 +27,7 @@ interface UserData {
 
 const LoginPage = () => {
   const history = useHistory();
+  const { registerUser } = useAuth();
 
   const schema = yup.object().shape({
     name: yup.string().required("Informe seu nome."),
@@ -47,7 +49,7 @@ const LoginPage = () => {
   });
 
   const onSubmitFunction = (user: UserData) => {
-    // register(user);
+    registerUser(user);
     history.push("/shop");
   };
 
