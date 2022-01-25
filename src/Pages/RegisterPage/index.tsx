@@ -58,17 +58,21 @@ const LoginPage = () => {
       <Box w={"35%"} bg={"cream.100"}>
         <Heading>Login</Heading>
         <FormControl as="form" onSubmit={handleSubmit(onSubmitFunction)}>
-          <Input {...register("name")}>Nome</Input>
+          <Input {...register("name")} placeholder="Nome" />
           <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
-          <Input {...register("email")}>E-mail</Input>
+          <Input {...register("email")} placeholder="E-mail" />
           <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
-          <Input {...register("password")}>Senha</Input>
+          <Input
+            {...register("password")}
+            placeholder="Senha"
+            type="password"
+          />
           <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
-          <Input>Confirme a senha</Input>
+          <Input placeholder="Confirme a senha" type="password" />
           <FormErrorMessage>{errors.confirmPassword?.message}</FormErrorMessage>
-          <Input {...register("state")}>Selecione o estado</Input>
+          <Input {...register("state")} placeholder="Selecione o estado" />
           <FormErrorMessage>{errors.state?.message}</FormErrorMessage>
-          <Input {...register("city")}>Selecione a cidade</Input>
+          <Input {...register("city")} placeholder="Selecione a cidade" />
           <FormErrorMessage>{errors.city?.message}</FormErrorMessage>
           <Button type="submit">Cadastrar</Button>
           <Text>
