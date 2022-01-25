@@ -1,6 +1,10 @@
 import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
+  fonts: {
+    heading: "Outfit",
+    body: "Outfit",
+  },
   colors: {
     cream: {
       100: "#F7F0F5",

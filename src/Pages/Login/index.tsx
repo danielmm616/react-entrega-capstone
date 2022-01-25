@@ -49,9 +49,9 @@ const LoginPage = () => {
       <Box w={"35%"} bg={"cream.100"}>
         <Heading>Login</Heading>
         <FormControl as="form" onSubmit={handleSubmit(onSubmitFunction)}>
-          <Input {...register("email")}>E-mail</Input>
+          <Input {...register("email")} placeholder="E-mail" />
           <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
-          <Input {...register("password")}>Senha</Input>
+          <Input {...register("password")} placeholder="Senha" />
           <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
           <Button type="submit">Entrar</Button>
           <Text>

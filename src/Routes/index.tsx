@@ -1,4 +1,5 @@
 import { Switch, Route } from "react-router-dom";
+import LoginPage from "../Pages/Login";
 
 import RegisterPage from "../Pages/RegisterPage";
 
