@@ -6,7 +6,7 @@ interface AuthProviderData {
   user: User;
   authToken: string;
   logIn: (userLogin: UserLoginProps) => void;
-  register: (userData: User) => void;
+  registerUser: (userData: User) => void;
   logOut: () => void;
 }
 
@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
       .catch((err) => console.log(err));
   };
 
-  const register = (userData: User) => {
+  const registerUser = (userData: User) => {
     api
       .post("/register", userData)
       .then((response) => {
@@ -62,7 +62,9 @@ export const AuthProvider = ({ children }: AuthProps) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, authToken, logIn, logOut, register }}>
+    <AuthContext.Provider
+      value={{ user, authToken, logIn, logOut, registerUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
