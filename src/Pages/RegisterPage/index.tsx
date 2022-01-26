@@ -8,25 +8,23 @@ import {
   Input,
   Button,
   Text,
-  Link,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { useAuth } from "../../Providers/AuthContext";
 
 interface UserData {
-  name: string;
   email: string;
   password: string;
+  name: string;
   confirmPassword?: string;
   state: string;
   city: string;
 }
 
-const LoginPage = () => {
-  const history = useHistory();
+const RegisterPage = () => {
   const { registerUser } = useAuth();
 
   const schema = yup.object().shape({
@@ -35,9 +33,11 @@ const LoginPage = () => {
     password: yup.string().required("Informe a senha.").min(6),
     confirmPassword: yup
       .string()
-      .oneOf(["password"], "Senhas diferentes")
+      .oneOf([yup.ref("password"), null], "Senhas diferentes")
       .required("Informe a mesma senha")
       .min(6),
+    state: yup.string().required("Informe o estado"),
+    city: yup.string().required("Informe a cidade"),
   });
 
   const {
@@ -50,13 +50,13 @@ const LoginPage = () => {
 
   const onSubmitFunction = (user: UserData) => {
     registerUser(user);
-    history.push("/shop");
+    console.log("onSubFunc user", user);
   };
 
   return (
     <Flex>
       <Box w={"35%"} bg={"cream.100"}>
-        <Heading>Login</Heading>
+        <Heading>Cadastro</Heading>
         <FormControl as="form" onSubmit={handleSubmit(onSubmitFunction)}>
           <Input {...register("name")} placeholder="Nome" />
           <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
@@ -68,7 +68,11 @@ const LoginPage = () => {
             type="password"
           />
           <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
-          <Input placeholder="Confirme a senha" type="password" />
+          <Input
+            {...register("confirmPassword")}
+            placeholder="Confirme a senha"
+            type="password"
+          />
           <FormErrorMessage>{errors.confirmPassword?.message}</FormErrorMessage>
           <Input {...register("state")} placeholder="Selecione o estado" />
           <FormErrorMessage>{errors.state?.message}</FormErrorMessage>
@@ -87,4 +91,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
