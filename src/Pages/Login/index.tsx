@@ -8,11 +8,10 @@ import {
   Input,
   Button,
   Text,
-  Link,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { useAuth } from "../../Providers/AuthContext";
 
@@ -22,7 +21,6 @@ interface UserData {
 }
 
 const LoginPage = () => {
-  const history = useHistory();
   const { logIn } = useAuth();
 
   const schema = yup.object().shape({
@@ -40,7 +38,6 @@ const LoginPage = () => {
 
   const onSubmitFunction = (user: UserData) => {
     logIn(user);
-    history.push("/shop");
   };
 
   return (
@@ -51,9 +48,9 @@ const LoginPage = () => {
       <Box w={"35%"} bg={"cream.100"}>
         <Heading>Login</Heading>
         <FormControl as="form" onSubmit={handleSubmit(onSubmitFunction)}>
-          <Input {...register("email")}>E-mail</Input>
+          <Input {...register("email")} placeholder="E-mail" />
           <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
-          <Input {...register("password")}>Senha</Input>
+          <Input {...register("password")} placeholder="Senha" />
           <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
           <Button type="submit">Entrar</Button>
           <Text>
