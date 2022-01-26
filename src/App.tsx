@@ -1,6 +1,5 @@
 import Routes from "./Routes";
 import "./App.css";
-import HeaderC from "./components/HeaderC";
 
 function App() {
   return (
