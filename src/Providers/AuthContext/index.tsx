@@ -26,6 +26,7 @@ interface User {
   state: string;
   city: string;
 }
+
 const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 
 export const AuthProvider = ({ children }: AuthProps) => {
@@ -36,11 +37,11 @@ export const AuthProvider = ({ children }: AuthProps) => {
 
   const logIn = (userLogin: UserLoginProps) => {
     api
-      .post("/login")
+      .post("/login", userLogin)
       .then((response) => {
         setAuthToken(response.data.accessToken);
         setUser(response.data.user);
-        history.push("/landing");
+        history.push("/");
       })
       .catch((err) => console.log(err));
   };
@@ -51,7 +52,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
       .then((response) => {
         setAuthToken(response.data.accessToken);
         setUser(response.data.user);
-        history.push("/landing");
+        history.push("/login");
       })
       .catch((err) => console.log(err));
   };

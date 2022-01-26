@@ -8,12 +8,12 @@ import {
   Input,
   Button,
   Text,
-  Link,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
+import { useAuth } from "../../Providers/AuthContext";
 
 interface UserData {
   email: string;
@@ -21,7 +21,7 @@ interface UserData {
 }
 
 const LoginPage = () => {
-  const history = useHistory();
+  const { logIn } = useAuth();
 
   const schema = yup.object().shape({
     email: yup.string().email("Invalid email.").required("Email required."),
@@ -37,8 +37,7 @@ const LoginPage = () => {
   });
 
   const onSubmitFunction = (user: UserData) => {
-    // logIn(user);
-    history.push("/shop");
+    logIn(user);
   };
 
   return (
