@@ -6,7 +6,7 @@ interface AuthProviderData {
   user: User;
   authToken: string;
   logIn: (userLogin: UserLoginProps) => void;
-  register: (userData: User) => void;
+  registerUser: (userData: User) => void;
   logOut: () => void;
 }
 
@@ -26,6 +26,7 @@ interface User {
   state: string;
   city: string;
 }
+
 const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 
 export const AuthProvider = ({ children }: AuthProps) => {
@@ -36,22 +37,23 @@ export const AuthProvider = ({ children }: AuthProps) => {
 
   const logIn = (userLogin: UserLoginProps) => {
     api
-      .post("/login")
+      .post("/login", userLogin)
       .then((response) => {
         setAuthToken(response.data.accessToken);
         setUser(response.data.user);
-        history.push("/landing");
+        history.push("/");
       })
       .catch((err) => console.log(err));
   };
 
-  const register = (userData: User) => {
+  const registerUser = (userData: User) => {
     api
       .post("/register", userData)
       .then((response) => {
         setAuthToken(response.data.accessToken);
         setUser(response.data.user);
-        history.push("/landing");
+        console.log("register userData", userData);
+        history.push("/login");
       })
       .catch((err) => console.log(err));
   };
@@ -62,7 +64,9 @@ export const AuthProvider = ({ children }: AuthProps) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, authToken, logIn, logOut, register }}>
+    <AuthContext.Provider
+      value={{ user, authToken, logIn, logOut, registerUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
