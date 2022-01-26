@@ -52,6 +52,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
       .then((response) => {
         setAuthToken(response.data.accessToken);
         setUser(response.data.user);
+        console.log("register userData", userData);
         history.push("/login");
       })
       .catch((err) => console.log(err));
