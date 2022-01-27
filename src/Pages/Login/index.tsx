@@ -62,7 +62,11 @@ const LoginPage = () => {
         wrap={"wrap"}
       >
         <Box w={"580px"}>
-          <Image src={ArteSanaLogin} w="551px" />
+          <Image
+            src={ArteSanaLogin}
+            w={["300px", "380px", "380px", "380px", "480px", "560px"]}
+            margin="0 auto"
+          />
         </Box>
         <Flex
           w={"351px"}
