@@ -1,14 +1,29 @@
 import { Button } from "@chakra-ui/react";
+import { ButtonHTMLAttributes } from "react";
 
-interface ButtonCProps {
+interface ButtonCProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: string;
   text: string;
-  variantColor: string;
+  bg: string;
+  minW?: string;
 }
 
-const ButtonC = ({ variant = "solid", text, variantColor }: ButtonCProps) => {
+const ButtonC = ({
+  variant = "solid",
+  text,
+  bg,
+  minW,
+  ...rest
+}: ButtonCProps) => {
   return (
-    <Button color="white" variantColor={variantColor} variant={variant}>
+    <Button
+      color="white"
+      bg={bg}
+      variant={variant}
+      _hover={{ bg: "green.300" }}
+      minW={minW}
+      {...rest}
+    >
       {text}
     </Button>
   );
