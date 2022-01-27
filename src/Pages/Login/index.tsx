@@ -66,6 +66,7 @@ const LoginPage = () => {
             src={ArteSanaLogin}
             w={["300px", "380px", "380px", "380px", "480px", "560px"]}
             margin="0 auto"
+            filter={"drop-shadow(5px 5px 5px #0000006f);"}
           />
         </Box>
         <Flex
