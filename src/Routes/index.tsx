@@ -1,6 +1,7 @@
 import { Switch, Route } from "react-router-dom";
 import LoginPage from "../Pages/Login";
 import RegisterPage from "../Pages/RegisterPage";
+import Vendedor from "../Pages/Vendedor";
 
 const Routes = () => {
   return (
@@ -13,6 +14,10 @@ const Routes = () => {
         <RegisterPage />
       </Route>
       <Route path="/shop"></Route>
+
+      <Route path="/vendedor">
+        <Vendedor />
+      </Route>
     </Switch>
   );
 };
