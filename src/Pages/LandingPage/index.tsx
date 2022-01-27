@@ -15,7 +15,7 @@ import { useHistory } from "react-router-dom";
 const LandingPage = () => {
   const history = useHistory();
   return (
-    <>
+    <Box bg='cream.100'>
       <Box>
         <Image
           width="100vw"
@@ -28,10 +28,14 @@ const LandingPage = () => {
       <Center>
         <Flex direction={["column-reverse", "row"]} align="center">
           <Box boxSize={[250, 300]}>
-            <Image src={CompleteLogo} alt="Logo Arte Sana" />
+            <Image
+              src={CompleteLogo}
+              alt="Logo Arte Sana"
+              filter={"drop-shadow(5px 5px 5px #366b1e7f);"}
+            />
           </Box>
           <VStack>
-            <Text fontSize="2xl" maxWidth="320px" mt={[14, 10]}>
+            <Text fontSize="2xl" maxWidth="320px" mt={[14, 10]} >
               Bem-vindo/a ao melhor lugar para comprar seus produtos artesanais
               favoritos!
             </Text>
@@ -44,17 +48,17 @@ const LandingPage = () => {
             onClick={() => history.push("/login")}
             text="Login"
             bg="green.200"
-            minW="100px"
+            minW="120px"
           />
           <ButtonC
             onClick={() => history.push("/register")}
             text="Cadastro"
             bg="green.200"
-            minW="100px"
+            minW="120px"
           />
         </Stack>
       </Flex>
-    </>
+    </Box>
   );
 };
 
