@@ -30,9 +30,9 @@ const LoginPage = () => {
   });
 
   const {
+    formState: { errors },
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm<UserData>({
     resolver: yupResolver(schema),
   });
@@ -87,6 +87,7 @@ const LoginPage = () => {
           >
             <Input
               {...register("email")}
+              error={errors.email}
               placeholder="E-mail"
               h="45px"
               w="80%"
@@ -97,11 +98,13 @@ const LoginPage = () => {
             <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
             <Input
               {...register("password")}
+              error={errors.password}
               placeholder="Senha"
               w="80%"
               h="45px"
               marginBottom={"20px"}
               bg={"brown.200"}
+              type={"password"}
               _placeholder={{ color: "cream.100" }}
             />
             <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
