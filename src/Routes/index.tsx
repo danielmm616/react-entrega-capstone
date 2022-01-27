@@ -1,4 +1,5 @@
 import { Switch, Route } from "react-router-dom";
+import LandingPage from "../Pages/LandingPage";
 import LoginPage from "../Pages/Login";
 import RegisterPage from "../Pages/RegisterPage";
 import Vendedor from "../Pages/Vendedor";
@@ -6,7 +7,9 @@ import Vendedor from "../Pages/Vendedor";
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/"></Route>
+      <Route exact path="/">
+        <LandingPage/>
+      </Route>
       <Route path="/login">
         <LoginPage />
       </Route>
