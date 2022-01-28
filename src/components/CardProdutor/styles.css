@@ -10,9 +10,9 @@
 }
 
 .flip-card-inner {
-    background-color: #c6f6d5;
+    background-color: #d0f3db;
     border-radius: 10px;
-    border:1px solid #c6f6d5;
+    border:1px solid #d0f3db;
     display: flex;
     justify-content: center;
     position: relative;
@@ -46,7 +46,7 @@
     border-radius: 50%;
     margin-top:20px;
   }
-  img{
+  .imgProdutor{
     display: flex;
     justify-content: center;
     border-radius: 50%; 
@@ -61,21 +61,21 @@
       background-color: #2f91559e;
       color: white;
   }
-  p{
+  .estadoCidade{
       width: 100%;
       background-color: #2f91559e;}
 
-      li{
+     .li-flip{
           list-style:none;
           cursor: pointer;
           
       }
-      li:hover{
+      .li-flip:hover{
         color: #11a519;
       }
   .flip-card-back {
     padding: 10px;
-    border:1px solid #c6f6d5;
+    border:1px solid #d0f3db;
     border-radius: 10px;
     height: 100%;
     color:#000;
