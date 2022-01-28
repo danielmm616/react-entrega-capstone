@@ -3,6 +3,7 @@ import LandingPage from "../Pages/LandingPage";
 import LoginPage from "../Pages/Login";
 import RegisterPage from "../Pages/RegisterPage";
 import Vendedor from "../Pages/Vendedor";
+import Cart from "../Pages/Cart";
 
 const Routes = () => {
   return (
@@ -20,6 +21,9 @@ const Routes = () => {
 
       <Route path="/vendedor">
         <Vendedor />
+      </Route>
+      <Route path="/cart">
+       <Cart/>
       </Route>
     </Switch>
   );
