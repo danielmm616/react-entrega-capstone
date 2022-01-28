@@ -37,7 +37,7 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
   useEffect(() => {
     api
       .get("/products")
-      .then((response) => setProducts(response.data.products));
+      .then((response) => setProducts(response.data));
   }, []);
 
   const registerProducts = (product: ProductsData) => {
