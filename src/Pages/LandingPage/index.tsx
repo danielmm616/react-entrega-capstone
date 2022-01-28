@@ -7,7 +7,7 @@ import {
   VStack,
   Stack,
 } from "@chakra-ui/react";
-import CompleteLogo from "../../assets/ArteSanaLogoCompleta.png";
+import CompleteLogo from "../../assets/ArteSanaLogin.png";
 import LandingPageImage from "../../assets/Hortifruti.jpg";
 import ButtonC from "../../components/ButtonC";
 import { useHistory } from "react-router-dom";
@@ -15,7 +15,7 @@ import { useHistory } from "react-router-dom";
 const LandingPage = () => {
   const history = useHistory();
   return (
-    <Box bg='cream.100'>
+    <Box bg='cream.100' h='100vh' w='100vw'>
       <Box>
         <Image
           width="100vw"
