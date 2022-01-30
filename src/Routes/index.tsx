@@ -3,12 +3,13 @@ import LandingPage from "../Pages/LandingPage";
 import LoginPage from "../Pages/Login";
 import RegisterPage from "../Pages/RegisterPage";
 import Vendedor from "../Pages/Vendedor";
+import TeamPage from "../Pages/TeamPage";
 
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/">
-        <LandingPage/>
+        <LandingPage />
       </Route>
       <Route path="/login">
         <LoginPage />
@@ -20,6 +21,9 @@ const Routes = () => {
 
       <Route path="/vendedor">
         <Vendedor />
+      </Route>
+      <Route path="/aboutus">
+        <TeamPage />
       </Route>
     </Switch>
   );
