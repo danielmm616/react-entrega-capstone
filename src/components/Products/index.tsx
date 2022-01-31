@@ -19,7 +19,7 @@ const ProductAddToCart = () => {
             <Box  padding-bottom='2px'key={produto.name} color='green.300' fontWeight={800}>
                     {produto.name}
                     <Box display='flex' justifyContent='center'  alignItems='center'> 
-                        <Image  borderRadius='cheio' boxSize='150px' src={produto.img} alt={''}/>
+                        <Image  borderRadius='50%' boxSize='150px' src={produto.img} alt={''}/>
                     </Box>
                     <Stat m='10px'>
                      <StatLabel>{produto.category}</StatLabel>

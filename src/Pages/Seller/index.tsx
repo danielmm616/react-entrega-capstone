@@ -1,8 +1,8 @@
-import CardProdutor from "../../components/CardProdutor"
+import CardSeller from "../../components/CardSeller"
 
 import { useAuth } from "../../Providers/AuthContext"
 
-const Vendedor = () => {
+const Seller = () => {
 
 
     const { user } = useAuth()
@@ -11,7 +11,7 @@ const Vendedor = () => {
         <>
         <h2>Vendedores</h2>
 
-        <CardProdutor  
+        <CardSeller  
             name={user.name}
             state={user.state}
             city={user.city}
@@ -20,4 +20,4 @@ const Vendedor = () => {
     )
 }
 
-export default Vendedor
+export default Seller
