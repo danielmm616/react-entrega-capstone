@@ -41,6 +41,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
       .then((response) => {
         setAuthToken(response.data.accessToken);
         setUser(response.data.user);
+        localStorage.setItem("@ArteSana:token", response.data.accessToken);
         history.push("/");
       })
       .catch((err) => console.log(err));
@@ -50,7 +51,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
     api
       .post("/register", userData)
       .then((response) => {
-        setAuthToken(response.data.accessToken);
+        // setAuthToken(response.data.accessToken);
         setUser(response.data.user);
         console.log("register userData", userData);
         history.push("/login");
