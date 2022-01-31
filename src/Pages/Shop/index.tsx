@@ -13,7 +13,7 @@ const Shop = () => {
       <FormProducts />
       <Flex m={[8, 16]}>
         <ProductAddToCart />
-        <CartC />
+        <CartC>{}</CartC>
       </Flex>
       <ProdutsEdits />
     </>
