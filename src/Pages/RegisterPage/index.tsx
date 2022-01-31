@@ -94,6 +94,7 @@ const RegisterPage = () => {
               marginBottom={"20px"}
               bg={"brown.200"}
               _placeholder={{ color: "cream.100" }}
+              color={"cream.100"}
             />
             <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
             <Input
@@ -104,6 +105,7 @@ const RegisterPage = () => {
               marginBottom={"20px"}
               bg={"brown.200"}
               _placeholder={{ color: "cream.100" }}
+              color={"cream.100"}
             />
             <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
             <Input
@@ -115,6 +117,7 @@ const RegisterPage = () => {
               marginBottom={"20px"}
               bg={"brown.200"}
               _placeholder={{ color: "cream.100" }}
+              color={"cream.100"}
             />
             <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
             <Input
@@ -126,6 +129,7 @@ const RegisterPage = () => {
               marginBottom={"20px"}
               bg={"brown.200"}
               _placeholder={{ color: "cream.100" }}
+              color={"cream.100"}
             />
             <FormErrorMessage>
               {errors.confirmPassword?.message}
@@ -138,6 +142,7 @@ const RegisterPage = () => {
               marginBottom={"20px"}
               bg={"brown.200"}
               _placeholder={{ color: "cream.100" }}
+              color={"cream.100"}
             />
             <FormErrorMessage>{errors.state?.message}</FormErrorMessage>
             <Input
@@ -148,14 +153,16 @@ const RegisterPage = () => {
               marginBottom={"20px"}
               bg={"brown.200"}
               _placeholder={{ color: "cream.100" }}
+              color={"cream.100"}
             />
             <FormErrorMessage>{errors.city?.message}</FormErrorMessage>
             <Button
               type="submit"
-              bg={"green.300"}
+              bg={"green.200"}
               color={"cream.100"}
               w="80%"
               h="45px"
+              _hover={{ backgroundColor: "green.300", transition: "0.5s" }}
             >
               Cadastrar
             </Button>
