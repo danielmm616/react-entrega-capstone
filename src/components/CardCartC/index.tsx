@@ -1,4 +1,15 @@
-import { Avatar, Box, Center, Divider, Flex, Text } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Center,
+  Divider,
+  Flex,
+  Icon,
+  Text,
+} from "@chakra-ui/react";
+import { useState } from "react";
+
+import { BsTrashFill } from "react-icons/bs";
 
 const product = {
   name: "Banana prata",
@@ -8,29 +19,31 @@ const product = {
 };
 
 const CardCartC = () => {
+  const [quantity, setQuantity] = useState(0);
+
   return (
     <>
-      <Flex>
-        <Avatar src={product.img} m={"8px"} />
+      <Flex alignItems={"center"}>
+        <Avatar src={product.img} m={2} />
 
         <Box>
           <Text color={"green.300"}>{product.name}</Text>
           <Center>
             <Center
-              p={"8px"}
-              h={"8px"}
+              as="button"
+              p={2}
+              h={2}
               borderRadius={4}
               bg={"#E71D36"}
               color={"cream.100"}
             >
               -
             </Center>
-            <Text ml={3} mr={3}>
-              3
-            </Text>
+            <Text mx={3}>{quantity}</Text>
             <Center
-              p={"8px"}
-              h={"8px"}
+              as="button"
+              p={2}
+              h={2}
               borderRadius={4}
               bg={"green.200"}
               color={"cream.100"}
@@ -39,6 +52,8 @@ const CardCartC = () => {
             </Center>
           </Center>
         </Box>
+
+        <Icon as={BsTrashFill} color={"brown.300"} boxSize={8} ml={2} />
       </Flex>
       <Divider />
     </>
