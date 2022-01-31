@@ -5,6 +5,7 @@ import RegisterPage from "../Pages/RegisterPage";
 import Vendedor from "../Pages/Vendedor";
 import TeamPage from "../Pages/TeamPage";
 import Shop from "../Pages/Shop";
+import Cart from "../Pages/Cart";
 
 const Routes = () => {
   return (
@@ -26,6 +27,9 @@ const Routes = () => {
       </Route>
       <Route path="/aboutus">
         <TeamPage />
+      </Route>
+      <Route path="/cart">
+        <Cart />
       </Route>
     </Switch>
   );
