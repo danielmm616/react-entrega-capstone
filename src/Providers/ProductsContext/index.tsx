@@ -24,7 +24,7 @@ interface ProductsData {
   category: string;
   price: number;
   img: string;
-  id:number;
+  id: number;
 }
 
 const ProductsContext = createContext<ProductsContextData>(
