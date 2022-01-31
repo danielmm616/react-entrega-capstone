@@ -2,7 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import LandingPage from "../Pages/LandingPage";
 import LoginPage from "../Pages/Login";
 import RegisterPage from "../Pages/RegisterPage";
-import Vendedor from "../Pages/Vendedor";
+import Seller from "../Pages/Seller";
 import TeamPage from "../Pages/TeamPage";
 import Shop from "../Pages/Shop";
 import Cart from "../Pages/Cart";
@@ -22,8 +22,8 @@ const Routes = () => {
       <Route path="/shop">
         <Shop />
       </Route>
-      <Route path="/vendedor">
-        <Vendedor />
+      <Route path="/sellerPage">
+        <Seller />
       </Route>
       <Route path="/aboutus">
         <TeamPage />
