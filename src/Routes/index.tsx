@@ -21,7 +21,7 @@ const Routes = () => {
       <Route path="/shop">
         <Shop />
       </Route>
-      <Route path="/vendedor">
+      <Route path="/sellerPage">
         <Seller />
       </Route>
       <Route path="/aboutus">
