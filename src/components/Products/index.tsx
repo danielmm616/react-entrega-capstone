@@ -1,8 +1,8 @@
 import { useProducts } from "../../Providers/ProductsContext"
 import { useCart } from "../../Providers/CartContext"
-import ButtonC from "../ButtonC"
+// import ButtonC from "../ButtonC"
 
-import { Box, Image,Flex, Stat, StatLabel, StatNumber, Button
+import { Box, Image,Flex, Stat,  StatNumber, Button
 } from '@chakra-ui/react'
 
     
@@ -13,29 +13,27 @@ const ProductAddToCart = () => {
     return(
         <>
        
-        <Box  m='25px auto' display='flex'flexWrap='wrap'  flexDirection='row' w='200px'
+        <Box h='100vh' m='25px auto' display='flex'flexWrap='wrap'  flexDirection='row' w='200px'
         >
         <Flex boxShadow={'dark-lg'} rounded='lg' bg='white'
-        h='320px' justifyContent='center'  background='#E5E5E5'  p={3} color='black'>
+        h='290px' w='200px' justifyContent='center'  background='#E5E5E5'  p={3} color='black'>
             {products.map((produto) => (
-            <Box  padding-bottom='2px'key={produto.name} color='green.300' fontWeight={800}>
+            <Box  padding-bottom='2px'key={produto.name} color='green.200' fontWeight={800}>
                     {produto.name}
                     <Box display='flex' justifyContent='center'  alignItems='center'> 
-                        <Image  borderRadius='50%' boxSize='150px' src={produto.img} alt={''}/>
+                        <Image mt='10px'mb='10px' borderRadius='50%' boxSize='120px' src={produto.img} alt={''}/>
                     </Box>
                     <Stat m='10px'>
-                     <StatLabel>{produto.category}</StatLabel>
                      <StatNumber>R$ {produto.price.toFixed(2)}</StatNumber>
                     </Stat>
 
-                    <ButtonC  
+                    <Button height='53px' borderRadius='0 0 7px 7px' color='white'width='200px' mt='5px'
                     onClick={() => addProducts(produto)}
-                    bg='green.300' text='adicionar'/>
+                   bg='green.200'>Adicionar</Button>
             </Box>
             ))}
 
         </Flex>
-
         </Box>
         </>
 

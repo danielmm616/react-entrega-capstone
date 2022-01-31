@@ -6,6 +6,7 @@ import Seller from "../Pages/Seller";
 import TeamPage from "../Pages/TeamPage";
 import Shop from "../Pages/Shop";
 import Cart from "../Pages/Cart";
+import RegisterProducts from "../Pages/RegisterProducts";
 
 const Routes = () => {
   return (
@@ -30,6 +31,9 @@ const Routes = () => {
       </Route>
       <Route path="/cart">
         <Cart />
+      </Route>
+      <Route path='/registerProducts'>
+        <RegisterProducts />
       </Route>
     </Switch>
   );
