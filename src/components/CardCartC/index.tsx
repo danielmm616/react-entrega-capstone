@@ -1,12 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Center,
-  Divider,
-  Flex,
-  Icon,
-  Text,
-} from "@chakra-ui/react";
+import { Avatar, Box, Center, Flex, Icon, Text } from "@chakra-ui/react";
 import { useState } from "react";
 
 import { BsTrashFill } from "react-icons/bs";
@@ -23,11 +15,21 @@ const CardCartC = () => {
 
   return (
     <>
-      <Flex alignItems={"center"}>
-        <Avatar src={product.img} m={2} />
+      <Flex
+        w={"90%"}
+        m={"auto"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        borderBottom={"solid"}
+        borderColor={"brown.200"}
+        borderBottomWidth={"1px"}
+      >
+        <Avatar src={product.img} my={2} mr={2} />
 
         <Box>
-          <Text color={"green.300"}>{product.name}</Text>
+          <Text color={"green.300"} mb={2}>
+            {product.name}
+          </Text>
           <Center>
             <Center
               as="button"
@@ -36,10 +38,13 @@ const CardCartC = () => {
               borderRadius={4}
               bg={"#E71D36"}
               color={"cream.100"}
+              _hover={{ bg: "#d90429" }}
             >
               -
             </Center>
-            <Text mx={3}>{quantity}</Text>
+            <Text mx={3} color={"brown.300"}>
+              {quantity}
+            </Text>
             <Center
               as="button"
               p={2}
@@ -47,15 +52,21 @@ const CardCartC = () => {
               borderRadius={4}
               bg={"green.200"}
               color={"cream.100"}
+              _hover={{ bg: "green.300" }}
             >
               +
             </Center>
           </Center>
         </Box>
 
-        <Icon as={BsTrashFill} color={"brown.300"} boxSize={8} ml={2} />
+        <Icon
+          as={BsTrashFill}
+          cursor={"pointer"}
+          color={"brown.300"}
+          boxSize={6}
+          ml={14}
+        />
       </Flex>
-      <Divider />
     </>
   );
 };
