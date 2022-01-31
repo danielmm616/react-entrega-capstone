@@ -1,12 +1,14 @@
 import { useProducts } from "../../Providers/ProductsContext"
+import { useCart } from "../../Providers/CartContext"
+import ButtonC from "../ButtonC"
 
 import { Box, Image,Flex, Stat, StatLabel, StatNumber, Button
 } from '@chakra-ui/react'
-import ButtonC from "../ButtonC"
 
     
 const ProductAddToCart = () => {
-       const { products , registerProducts} = useProducts()
+       const { products } = useProducts()
+       const { addProducts } = useCart()
 
     return(
         <>
@@ -19,7 +21,7 @@ const ProductAddToCart = () => {
             <Box  padding-bottom='2px'key={produto.name} color='green.300' fontWeight={800}>
                     {produto.name}
                     <Box display='flex' justifyContent='center'  alignItems='center'> 
-                        <Image  borderRadius='cheio' boxSize='150px' src={produto.img} alt={''}/>
+                        <Image  borderRadius='50%' boxSize='150px' src={produto.img} alt={''}/>
                     </Box>
                     <Stat m='10px'>
                      <StatLabel>{produto.category}</StatLabel>
@@ -27,7 +29,7 @@ const ProductAddToCart = () => {
                     </Stat>
 
                     <ButtonC  
-                    onClick={() => registerProducts(produto)}
+                    onClick={() => addProducts(produto)}
                     bg='green.300' text='adicionar'/>
             </Box>
             ))}

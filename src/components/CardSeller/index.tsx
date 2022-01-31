@@ -13,7 +13,7 @@ import  './styles.css'
       legumes:string;
       frutas:string;
   }
-const CardProdutor = ({name,state,city}:User, {ovos,mel,verduras,legumes,frutas}:Category) => {
+const CardSeller = ({name,state,city}:User, {ovos,mel,verduras,legumes,frutas}:Category) => {
 
     return(
 
@@ -45,4 +45,4 @@ const CardProdutor = ({name,state,city}:User, {ovos,mel,verduras,legumes,frutas}
     )
 }
 
-export default CardProdutor
+export default CardSeller

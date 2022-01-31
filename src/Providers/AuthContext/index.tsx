@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import { useHistory } from "react-router-dom";
 import api from "../../services/Axios";
+import { useToast } from "@chakra-ui/react";
 
 interface AuthProviderData {
   user: User;
@@ -31,7 +32,7 @@ const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 
 export const AuthProvider = ({ children }: AuthProps) => {
   const history = useHistory();
-
+  const toast = useToast();
   const [authToken, setAuthToken] = useState("");
   const [user, setUser] = useState<User>({} as User);
 
@@ -41,21 +42,52 @@ export const AuthProvider = ({ children }: AuthProps) => {
       .then((response) => {
         setAuthToken(response.data.accessToken);
         setUser(response.data.user);
-        history.push("/");
+        localStorage.setItem("@ArteSana:token", response.data.accessToken);
+        history.push("/sellers");
+        toast({
+          position: "top",
+          title: "Login bem sucedido!",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
       })
-      .catch((err) => console.log(err));
+      .catch((_) =>
+        toast({
+          position: "top",
+          title: "Email ou senha inválidos!",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        })
+      );
   };
 
   const registerUser = (userData: User) => {
     api
       .post("/register", userData)
       .then((response) => {
-        setAuthToken(response.data.accessToken);
+        // setAuthToken(response.data.accessToken);
         setUser(response.data.user);
         console.log("register userData", userData);
         history.push("/login");
+        toast({
+          position: "top",
+          title: "Cadastro concluído!",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
       })
-      .catch((err) => console.log(err));
+      .catch((_) =>
+        toast({
+          position: "top",
+          title: "Erro ao cadastrar!",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        })
+      );
   };
 
   const logOut = () => {

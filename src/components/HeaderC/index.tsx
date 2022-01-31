@@ -1,5 +1,6 @@
 import { Flex, Heading, Image } from "@chakra-ui/react";
-import { BsCart3, BsShop } from "react-icons/bs";
+import { BsCart3 } from "react-icons/bs";
+import { MdOutlineSell } from "react-icons/md";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import Logo from "../../assets/ArteSanaLogo.png";
 import { useAuth } from "../../Providers/AuthContext";
@@ -39,7 +40,7 @@ const HeaderC = () => {
           _hover={{ transform: "scale(1.1)", transition: "0.5s" }}
         />
         <Icon
-          as={BsShop}
+          as={MdOutlineSell}
           fontSize="40px"
           color="cream.100"
           cursor="pointer"
