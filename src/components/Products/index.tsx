@@ -1,12 +1,14 @@
 import { useProducts } from "../../Providers/ProductsContext"
+import { useCart } from "../../Providers/CartContext"
+import ButtonC from "../ButtonC"
 
 import { Box, Image,Flex, Stat, StatLabel, StatNumber, Button
 } from '@chakra-ui/react'
-import ButtonC from "../ButtonC"
 
     
 const ProductAddToCart = () => {
-       const { products , registerProducts} = useProducts()
+       const { products } = useProducts()
+       const { addProducts } = useCart()
 
     return(
         <>
@@ -27,7 +29,7 @@ const ProductAddToCart = () => {
                     </Stat>
 
                     <ButtonC  
-                    onClick={() => registerProducts(produto)}
+                    onClick={() => addProducts(produto)}
                     bg='green.300' text='adicionar'/>
             </Box>
             ))}
