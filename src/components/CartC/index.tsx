@@ -3,12 +3,14 @@ import ButtonC from "../ButtonC";
 import { useHistory } from "react-router-dom";
 import CardCartC from "../CardCartC";
 import { ReactNode } from "react";
+import { useCart } from "../../Providers/CartContext";
 
 interface CartCProps {
   children: ReactNode;
 }
 
 const CartC = ({ children }: CartCProps) => {
+  const { cartProducts } = useCart();
   const history = useHistory();
 
   return (
@@ -39,10 +41,19 @@ const CartC = ({ children }: CartCProps) => {
         }}
       >
         {children}
+        {cartProducts.map((card) => (
+          <CardCartC {...card} />
+        ))}
       </Box>
       <Flex mb="20px" justify="space-between" p="0 10px">
         <Text>Total</Text>
-        <Text>R$</Text>
+        <Text>
+          {cartProducts.reduce(
+            (acc, product) => acc + product.price * product.quantity,
+            0
+          )}{" "}
+          R$
+        </Text>
       </Flex>
 
       <ButtonC

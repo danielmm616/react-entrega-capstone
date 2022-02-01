@@ -28,6 +28,7 @@ interface ProductsData {
   name: string;
   category: string;
   price: number;
+  quantity: number;
   img: string;
   id: number;
 }
@@ -36,8 +37,6 @@ const ProdutsEdits = () => {
   const { products, editProducts, deleteProducts } = useProducts();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  console.log(products);
 
   const {
     register,
