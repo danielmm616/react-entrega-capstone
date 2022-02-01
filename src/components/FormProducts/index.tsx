@@ -100,6 +100,7 @@ const FormProducts = () => {
                 Preço
                 <Input
                   {...register("price")}
+                  type='number'
                   placeholder="Preço"
                   _placeholder={{ color: "cream.300" }}
                 />

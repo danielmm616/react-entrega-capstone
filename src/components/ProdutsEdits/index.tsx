@@ -118,6 +118,7 @@ const ProdutsEdits = () => {
                             Preço
                             <Input
                             text={produto.price}
+                            type='number'
                             {...register("price")}
                             placeholder={produto.price.toFixed(2)}
                             _placeholder={{ color: "cream.400" }}
