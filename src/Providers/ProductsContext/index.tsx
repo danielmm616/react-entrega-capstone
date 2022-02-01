@@ -39,12 +39,15 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
   useEffect(() => {
     api.get("/products").then((response) => setProducts(response.data));
   }, []);
-
+  const token = localStorage.getItem("@ArteSana:token");
+  const userId = Number(localStorage.getItem("@userId"));
   const registerProducts = (product: ProductsData) => {
+    const { name, category, price, img, id } = product;
+    const corpo = { name, category, price, img, id, userId };
     api
-      .post("/products", product, {
+      .post("/products", corpo, {
         headers: {
-          Authorization: `Bearer ${authToken}`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((_) =>

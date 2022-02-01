@@ -79,9 +79,9 @@ const Cart = () => {
             p="10px"
             boxShadow="lg"
           >
-        <CartC>
+            {/* <CartC>
 
-        </CartC>
+        </CartC> */}
             <Stack spacing={8}>
               <Text fontSize="2xl">Total</Text>
               <Text fontSize="2xl">R$</Text>
