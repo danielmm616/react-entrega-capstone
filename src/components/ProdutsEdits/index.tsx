@@ -54,7 +54,7 @@ const ProdutsEdits = () => {
         <>
       
         <Box h='100vh'm='25px auto' display='flex' flexWrap='wrap' flexDirection='row' w='200px'>
-            <Flex boxShadow={'dark-lg'} rounded='lg' bg='white' 
+            <Flex boxShadow='7px 7px 7px 0px rgba(0,0,0,0.22)' rounded='lg' bg='white' 
             h='290px' w='200px' justifyContent='center' background='#E5E5E5' p={3} color='black'>
                 {products.map((produto) => (
                     <Box padding-bottom='2px' key={produto.name} color='green.200' fontWeight={800}>
@@ -79,7 +79,7 @@ const ProdutsEdits = () => {
                     <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent>
-                    <ModalHeader color="green.200">Adicione seu Produto</ModalHeader>
+                    <ModalHeader color="green.200">Edite seu Produto</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody pb={6} display="flex" justifyContent="center">
                         <FormControl as="form" onSubmit={handleSubmit(onSubmitProduct)} >
@@ -127,7 +127,7 @@ const ProdutsEdits = () => {
 
                         <ModalFooter mr='10px'diplay='flex'justifyContent='space-between'>
                             
-                            <Button color='white'type="submit" bg="green.200" >Editar</Button>
+                            <Button _hover={{bg: 'green.300'}}color='white'type="submit" bg="green.200" >Editar</Button>
                             <Button onClick={onClose}>Cancel</Button>
                         </ModalFooter>
                         </FormControl>
