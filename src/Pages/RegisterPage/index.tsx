@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import * as yup from "yup";
 import { useAuth } from "../../Providers/AuthContext";
 import ArteSanaLogin from "../../assets/ArteSanaLogin.png";
@@ -27,7 +27,7 @@ interface UserData {
 
 const RegisterPage = () => {
   const { registerUser } = useAuth();
-
+  const token = localStorage.getItem("@ArteSana:token");
   const schema = yup.object().shape({
     name: yup.string().required("Informe seu nome."),
     email: yup.string().email("Invalid email.").required("Informe seu e-mail."),
@@ -53,6 +53,10 @@ const RegisterPage = () => {
     registerUser(user);
     console.log("onSubFunc user", user);
   };
+
+  if (token) {
+    return <Redirect to="/shop" />;
+  }
 
   return (
     <Flex

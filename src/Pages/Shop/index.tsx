@@ -4,8 +4,14 @@ import FormProducts from "../../components/FormProducts";
 import HeaderC from "../../components/HeaderC";
 import ProductAddToCart from "../../components/Products";
 import ProdutsEdits from "../../components/ProdutsEdits";
+import { Redirect } from "react-router-dom";
 
 const Shop = () => {
+  const token = localStorage.getItem("@ArteSana:token");
+  if (!token) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <>
       <HeaderC />
