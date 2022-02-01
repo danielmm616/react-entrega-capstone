@@ -1,23 +1,22 @@
-import CardSeller from "../../components/CardSeller"
-
-import { useAuth } from "../../Providers/AuthContext"
+import CardSeller from "../../components/CardSeller";
+import { Redirect } from "react-router-dom";
+import { useAuth } from "../../Providers/AuthContext";
 
 const Seller = () => {
+  const token = localStorage.getItem("@ArteSana:token");
+  const { user } = useAuth();
 
+  if (!token) {
+    return <Redirect to="/" />;
+  }
 
-    const { user } = useAuth()
+  return (
+    <>
+      <h2>Vendedores</h2>
 
-    return(
-        <>
-        <h2>Vendedores</h2>
+      <CardSeller name={user.name} state={user.state} city={user.city} />
+    </>
+  );
+};
 
-        <CardSeller  
-            name={user.name}
-            state={user.state}
-            city={user.city}
-            />
-        </>
-    )
-}
-
-export default Seller
+export default Seller;

@@ -60,7 +60,7 @@ const ProdutsEdits = () => {
         w="200px"
       >
         <Flex
-          boxShadow={"dark-lg"}
+          boxShadow="7px 7px 7px 0px rgba(0,0,0,0.22)"
           rounded="lg"
           bg="white"
           h="290px"
@@ -104,7 +104,7 @@ const ProdutsEdits = () => {
                   <ModalOverlay />
                   <ModalContent>
                     <ModalHeader color="green.200">
-                      Adicione seu Produto
+                      Edite seu Produto
                     </ModalHeader>
                     <ModalCloseButton />
                     <ModalBody pb={6} display="flex" justifyContent="center">
@@ -167,7 +167,12 @@ const ProdutsEdits = () => {
                           diplay="flex"
                           justifyContent="space-between"
                         >
-                          <Button color="white" type="submit" bg="green.200">
+                          <Button
+                            _hover={{ bg: "green.300" }}
+                            color="white"
+                            type="submit"
+                            bg="green.200"
+                          >
                             Editar
                           </Button>
                           <Button onClick={onClose}>Cancel</Button>
