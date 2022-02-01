@@ -18,7 +18,7 @@ const Cart = () => {
 
   const { cartProducts } = useCart();
 
-  if (cartProducts.length === 0) {
+  if (cartProducts.length === 1) {
     return (
       <Box bg="cream.100" w="100vw" h="100vh">
         <HeaderC />
@@ -77,6 +77,9 @@ const Cart = () => {
             p="10px"
             boxShadow="lg"
           >
+        <CartC>
+
+        </CartC>
             <Stack spacing={8}>
               <Text fontSize="2xl">Total</Text>
               <Text fontSize="2xl">R$</Text>
