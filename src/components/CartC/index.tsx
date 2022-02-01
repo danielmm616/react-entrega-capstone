@@ -1,24 +1,38 @@
-import { Box, Text, Flex } from "@chakra-ui/react";
+import { Box, Text, Flex, Center } from "@chakra-ui/react";
 import ButtonC from "../ButtonC";
 import { useHistory } from "react-router-dom";
 import CardCartC from "../CardCartC";
 import { ReactNode } from "react";
 
-interface CartCProps {
-  children: ReactNode;
+interface Product {
+  name: string;
+  quantity: number;
+  img: string;
 }
 
-const CartC = ({ children }: CartCProps) => {
+interface CartCProps {
+  list: Product[]
+}
+
+const CartC = ({list}: CartCProps) => {
   const history = useHistory();
 
   return (
+    <Box 
+    display={['none', 'none', 'inherit']}
+    position='fixed'
+    left='70vw'
+    bottom='5vh'
+    >
+    
+
     <Box
       color="white"
       w="300px"
       h="450px"
       bg="brown.300"
       borderRadius="10px"
-      boxShadow="7px 7px 5px 0px rgba(0,0,0,0.22)"
+      boxShadow="7px 7px 7px 0px rgba(0,0,0,0.22)"
     >
       <Text p="10px">Compra atual</Text>
       <Box
@@ -38,7 +52,19 @@ const CartC = ({ children }: CartCProps) => {
           },
         }}
       >
-        {children}
+        {list.length === 0 ? (
+          <Center>
+
+          <Text fontSize='2xl'>
+             Nada no carrinho... compre algo bom e caseiro!
+          </Text>
+          </Center>
+        ) : (
+          list.map((product) => (
+            <CardCartC/>
+        ))
+        )
+      }
       </Box>
       <Flex mb="20px" justify="space-between" p="0 10px">
         <Text>Total</Text>
@@ -51,6 +77,7 @@ const CartC = ({ children }: CartCProps) => {
         bg="green.200"
       />
     </Box>
+        </Box>
   );
 };
 
