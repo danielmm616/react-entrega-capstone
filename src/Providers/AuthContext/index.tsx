@@ -44,6 +44,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
         setUser(response.data.user);
         localStorage.setItem("@ArteSana:token", response.data.accessToken);
         history.push("/sellers");
+        localStorage.setItem("@userId", response.data.user.id);
         toast({
           position: "top",
           title: "Login bem sucedido!",
@@ -92,7 +93,15 @@ export const AuthProvider = ({ children }: AuthProps) => {
 
   const logOut = () => {
     setAuthToken("");
+    localStorage.clear();
     history.push("/login");
+    toast({
+      position: "top",
+      title: "Volte sempre! ;D",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
   };
 
   return (

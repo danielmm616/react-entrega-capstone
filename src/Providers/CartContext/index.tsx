@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, ReactNode } from "react";
+import { useToast } from "@chakra-ui/react";
 
 interface ProductsContextData {
   cartProducts: ProductsData[];
@@ -14,6 +15,7 @@ interface ProductsData {
   name: string;
   category: string;
   price: number;
+  quantity: number;
   img: string;
 }
 
@@ -23,14 +25,31 @@ const CartContext = createContext<ProductsContextData>(
 
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartProducts, setCartProducts] = useState<ProductsData[]>([]);
+  const toast = useToast();
+
+  console.log(cartProducts)
 
   const addProducts = (product: ProductsData) => {
     setCartProducts([...cartProducts, product]);
+    toast({
+      position: "top",
+      title: "Produto adicionado ao carrinho!",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
   };
 
   const removeProducts = (product: ProductsData) => {
     const cart = cartProducts.filter((item) => product.name !== item.name);
     setCartProducts(cart);
+    toast({
+      position: "top",
+      title: "Produto removido do carrinho!",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
   };
 
   return (
