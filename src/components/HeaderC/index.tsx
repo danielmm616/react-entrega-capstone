@@ -1,12 +1,15 @@
 import { Flex, Heading, Image } from "@chakra-ui/react";
-import { BsShop } from "react-icons/bs";
+import { BsCart3 } from "react-icons/bs";
+import { MdOutlineSell } from "react-icons/md";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import Logo from "../../assets/ArteSanaLogo.png";
 import { useAuth } from "../../Providers/AuthContext";
-import InputC from "../InputC";
+import { Icon } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
 
 const HeaderC = () => {
   const { logOut } = useAuth();
+  const history = useHistory();
 
   return (
     <Flex
@@ -22,20 +25,35 @@ const HeaderC = () => {
           Arte Sana
         </Heading>
       </Flex>
-      <Flex color="cream.100">
-        <InputC
-          placeholder="Procure..."
-          bg="brown.200"
-          rightElement
-          width="200px"
+      <Flex
+        color="cream.100"
+        w="200px"
+        justifyContent="space-around"
+        marginBottom="10px"
+      >
+        <Icon
+          as={BsCart3}
+          fontSize="40px"
+          color="cream.100"
+          cursor="pointer"
+          onClick={() => history.push("/cart")}
+          _hover={{ transform: "scale(1.1)", transition: "0.5s" }}
         />
-        <BsShop fontSize="40px" color="cream.100" cursor="pointer" />
-        &nbsp;&nbsp;
-        <RiLogoutBoxRLine
+        <Icon
+          as={MdOutlineSell}
+          fontSize="40px"
+          color="cream.100"
+          cursor="pointer"
+          onClick={() => history.push("/sellerPage")}
+          _hover={{ transform: "scale(1.1)", transition: "0.5s" }}
+        />
+        <Icon
+          as={RiLogoutBoxRLine}
           fontSize="40px"
           color="cream.100"
           cursor="pointer"
           onClick={logOut}
+          _hover={{ transform: "scale(1.1)", transition: "0.5s" }}
         />
       </Flex>
     </Flex>

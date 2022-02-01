@@ -14,6 +14,7 @@ interface ProductsData {
   name: string;
   category: string;
   price: number;
+  quantity: number;
   img: string;
 }
 
