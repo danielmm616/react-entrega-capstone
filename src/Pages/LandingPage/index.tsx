@@ -10,12 +10,18 @@ import {
 import CompleteLogo from "../../assets/ArteSanaLogin.png";
 import LandingPageImage from "../../assets/Hortifruti.jpg";
 import ButtonC from "../../components/ButtonC";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 const LandingPage = () => {
   const history = useHistory();
+  const token = localStorage.getItem("@ArteSana:token");
+
+  if (token) {
+    return <Redirect to="/shop" />;
+  }
+
   return (
-    <Box bg='cream.100' h='100vh' w='100vw'>
+    <Box bg="cream.100" h="100vh" w="100vw">
       <Box>
         <Image
           width="100vw"
@@ -35,7 +41,7 @@ const LandingPage = () => {
             />
           </Box>
           <VStack>
-            <Text fontSize="2xl" maxWidth="320px" mt={[14, 10]} >
+            <Text fontSize="2xl" maxWidth="320px" mt={[14, 10]}>
               Bem-vindo/a ao melhor lugar para comprar seus produtos artesanais
               favoritos!
             </Text>
@@ -58,6 +64,14 @@ const LandingPage = () => {
           />
         </Stack>
       </Flex>
+      <Text
+        onClick={() => history.push("/aboutus")}
+        cursor={"pointer"}
+        marginTop={"30px"}
+        _hover={{ textDecoration: "underline" }}
+      >
+        Conheça o time Arte Sana
+      </Text>
     </Box>
   );
 };

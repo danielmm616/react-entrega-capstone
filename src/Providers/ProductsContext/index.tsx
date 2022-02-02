@@ -1,3 +1,4 @@
+import { useToast } from "@chakra-ui/react";
 import {
   createContext,
   useContext,
@@ -6,13 +7,13 @@ import {
   useEffect,
 } from "react";
 import api from "../../services/Axios";
-import { useAuth } from "../AuthContext";
 
 interface ProductsContextData {
   products: ProductsData[];
   registerProducts: (product: ProductsData) => void;
   editProducts: (product: ProductsData) => void;
   deleteProducts: (id: number) => void;
+  sellers: SellersData[];
 }
 
 interface ProductsProviderProps {
@@ -23,7 +24,17 @@ interface ProductsData {
   name: string;
   category: string;
   price: number;
+  quantity: number;
   img: string;
+  id: number;
+}
+
+interface SellersData {
+  email: string;
+  password: string;
+  name: string;
+  state: string;
+  seller: boolean;
   id: number;
 }
 
@@ -32,36 +43,118 @@ const ProductsContext = createContext<ProductsContextData>(
 );
 
 export const ProductsProvider = ({ children }: ProductsProviderProps) => {
-  const { authToken } = useAuth();
   const [products, setProducts] = useState<ProductsData[]>([]);
-
+  const [sellers, setSellers] = useState<SellersData[]>([]);
+  const toast = useToast();
   useEffect(() => {
     api.get("/products").then((response) => setProducts(response.data));
   }, []);
 
+  useEffect(() => {
+    api
+      .get("/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => setSellers(response.data));
+  });
+  const token = localStorage.getItem("@ArteSana:token");
+  const userId = Number(localStorage.getItem("@userId"));
   const registerProducts = (product: ProductsData) => {
-    api.post("/products", product, {
-      headers: {
-        Authorization: `Bearer ${authToken}`,
-      },
-    });
+    const { name, category, price, img, id } = product;
+    const corpo = { name, category, price, img, id, userId };
+    api
+      .post("/products", corpo, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((_) =>
+        toast({
+          position: "top",
+          title: "Produto cadastrado!",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        })
+      )
+      .catch((_) =>
+        toast({
+          position: "top",
+          title: "Não foi possível cadastrar seu produto!",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        })
+      );
   };
 
   const editProducts = (product: ProductsData) => {
-    api.patch("/products", product, {
-      headers: {
-        Authorization: `Bearer ${authToken}`,
-      },
-    });
+    const body = { ...product, userId };
+    console.log(body);
+    api
+      .patch(`/products/${product.id}`, body, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((_) =>
+        toast({
+          position: "top",
+          title: "Sucesso ao editar!",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        })
+      )
+      .catch((_) =>
+        toast({
+          position: "top",
+          title: "Erro ao editar!",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        })
+      );
   };
 
   const deleteProducts = (id: number) => {
-    api.delete(`/products/${id}`);
+    api
+      .delete(`/products/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((_) =>
+        toast({
+          position: "top",
+          title: "Produto deletado!",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        })
+      )
+      .catch((_) =>
+        toast({
+          position: "top",
+          title: "Não foi possível remover!",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        })
+      );
   };
 
   return (
     <ProductsContext.Provider
-      value={{ products, registerProducts, editProducts, deleteProducts }}
+      value={{
+        products,
+        registerProducts,
+        editProducts,
+        deleteProducts,
+        sellers,
+      }}
     >
       {children}
     </ProductsContext.Provider>

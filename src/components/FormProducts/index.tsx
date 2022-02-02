@@ -25,6 +25,7 @@ interface ProductsData {
   name: string;
   category: string;
   price: number;
+  quantity: number;
   img: string;
   id: number;
 }
@@ -56,16 +57,16 @@ const FormProducts = () => {
 
   return (
     <>
-      <ButtonC onClick={onOpen} bg="green.300" text="+" />
+      <ButtonC onClick={onOpen} bg="green.200" text="+" />
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal data-testid="modal-element" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader color="green.300">Adicione seu Produto</ModalHeader>
+          <ModalHeader color="green.200">Adicione seu Produto</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6} display="flex" justifyContent="center">
             <FormControl as="form" onSubmit={handleSubmit(onSubmitProduct)}>
-              <FormLabel color="green.300">
+              <FormLabel color="green.200">
                 Link Imagem
                 <Input
                   {...register("img")}
@@ -76,7 +77,7 @@ const FormProducts = () => {
                 <FormErrorMessage>{errors.img?.message}</FormErrorMessage>
               </FormLabel>
 
-              <FormLabel color="green.300">
+              <FormLabel color="green.200">
                 Nome do Produto
                 <Input
                   {...register("name")}
@@ -86,7 +87,7 @@ const FormProducts = () => {
                 <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
               </FormLabel>
 
-              <FormLabel color="green.300">
+              <FormLabel color="green.200">
                 Categoria
                 <Input
                   {...register("category")}
@@ -96,7 +97,7 @@ const FormProducts = () => {
                 <FormErrorMessage>{errors.category?.message}</FormErrorMessage>
               </FormLabel>
 
-              <FormLabel color="green.300">
+              <FormLabel color="green.200">
                 Preço
                 <Input
                   {...register("price")}

@@ -18,6 +18,7 @@ const HeaderC = () => {
       justifyContent="space-around"
       alignItems="center"
       wrap="wrap"
+      data-testid="header-element"
     >
       <Flex direction="column" alignItems="center" justifyContent="center">
         <Image src={Logo} alt="Arte Sana" height="50%" width="100px" />
@@ -44,7 +45,7 @@ const HeaderC = () => {
           fontSize="40px"
           color="cream.100"
           cursor="pointer"
-          onClick={() => history.push("/sellerPage")}
+          onClick={() => history.push("/registerProducts")}
           _hover={{ transform: "scale(1.1)", transition: "0.5s" }}
         />
         <Icon

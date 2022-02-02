@@ -1,48 +1,72 @@
-import  './styles.css'
+import { Box, Flex, Image, Stat } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
 
-  interface User {
-    name: string;
-    state: string;
-    city: string;
-  }
-
-  interface Category {
-      ovos: string;
-      mel: string;
-      verduras:string;
-      legumes:string;
-      frutas:string;
-  }
-const CardSeller = ({name,state,city}:User, {ovos,mel,verduras,legumes,frutas}:Category) => {
-
-    return(
-
-        <>
-        <div className="flip-card">  
-                 <div  className="flip-card-inner">
-                    <div className="flip-card-front">
-                        <h1>{name = "Yasmin"}</h1>
-                        <img className='imgProdutor'src='https://creazilla-store.fra1.digitaloceanspaces.com/emojis/52524/man-farmer-emoji-clipart-xl.png' alt=''/>
-                        <div className='frente'>
-                          <p className='estadoCidade'>{state = 'Sp'}</p>
-                          <p className='estadoCidade'>{city = 'Mococa'}</p>
-                        </div>
-                   </div> 
-                    <div className="flip-card-back">
-                           <ul>
-                               <li className='li-flip'>{ovos = 'Ovos'}</li>
-                               <li className='li-flip'>{mel = 'Mel'}</li>
-                               <li className='li-flip'>{verduras = 'Verduras'}</li>
-                               <li className='li-flip'>{legumes = 'Legumes'}</li>
-                               <li className='li-flip'>{frutas = 'Maçã'}</li>
-                               <li className='li-flip'>{frutas = 'Banana'}</li>
-                          </ul>
-                    </div>
-                </div> 
-            </div>
-        </>
-         
-    )
+interface User {
+  name: string;
+  state: string;
+  city: string;
 }
 
-export default CardSeller
+const CardSeller = ({ name, state, city }: User) => {
+  const history = useHistory();
+
+  return (
+    <>
+      <Box
+        m="25px"
+        display="flex"
+        flexWrap="wrap"
+        flexDirection="row"
+        w="200px"
+      >
+        <Flex
+          cursor="pointer"
+          boxShadow="7px 7px 7px 0px rgba(0,0,0,0.22)"
+          rounded="lg"
+          bg="white"
+          onClick={() => history.push("/shop")}
+          h="290px"
+          w="200px"
+          justifyContent="center"
+          background="#E5E5E5"
+          p={3}
+          color="black"
+        >
+          <Box
+            fontSize="25px"
+            padding-bottom="2px"
+            key={name}
+            color="green.200"
+            fontWeight={800}
+          >
+            {name}
+            <Box
+              mt="30px"
+              mb="30px"
+              bg="white"
+              display="flex"
+              borderRadius="50%"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Image
+                border="solid #E5E5E5 1px"
+                borderRadius="50%"
+                boxSize="120px"
+                src={
+                  "https://i.pinimg.com/originals/31/49/06/3149064b2ba03c557e30efbc7b30a114.png"
+                }
+                alt={""}
+              />
+            </Box>
+            <Stat>
+              <Stat fontSize="25px">{state}</Stat>
+            </Stat>
+          </Box>
+        </Flex>
+      </Box>
+    </>
+  );
+};
+
+export default CardSeller;
