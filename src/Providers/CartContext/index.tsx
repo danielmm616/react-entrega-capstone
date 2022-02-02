@@ -28,7 +28,8 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const toast = useToast();
 
   const addProducts = (product: ProductsData) => {
-    setCartProducts([...cartProducts, product]);
+    // setCartProducts([...cartProducts, product]);
+    setCartProducts([...cartProducts, { ...product, quantity: 1 }]);
     toast({
       position: "top",
       title: "Produto adicionado ao carrinho!",
