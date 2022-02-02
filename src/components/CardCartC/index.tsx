@@ -1,6 +1,8 @@
 import { Avatar, Box, Center, Flex, Icon, Text } from "@chakra-ui/react";
 import { useState } from "react";
 
+import { useCart } from "../../Providers/CartContext";
+
 import { BsTrashFill } from "react-icons/bs";
 
 interface ProductsData {
@@ -13,21 +15,22 @@ interface ProductsData {
 }
 
 const CardCartC = ({ product }: { product: ProductsData }) => {
+  const { removeProducts } = useCart();
   // const CardCartC = ({ name, quantity = 1, img }: ProductsData) => {
   const [count, setCount] = useState<number>(1);
 
   return (
     <>
       <Flex
-        w={"90%"}
+        w={"260px"}
         m={"auto"}
-        justifyContent={"center"}
+        justifyContent={"space-between"}
         alignItems={"center"}
         borderBottom={"solid"}
         borderColor={"brown.200"}
         borderBottomWidth={"1px"}
       >
-        <Avatar src={product.img} my={2} mr={2} />
+        <Avatar src={product.img} m={2} />
 
         <Box>
           <Text color={"green.300"} mb={2}>
@@ -42,6 +45,10 @@ const CardCartC = ({ product }: { product: ProductsData }) => {
               bg={"#E71D36"}
               color={"cream.100"}
               _hover={{ bg: "#d90429" }}
+              onClick={() => {
+                count > 1 && setCount(count - 1);
+                product.quantity = count;
+              }}
             >
               -
             </Center>
@@ -72,6 +79,9 @@ const CardCartC = ({ product }: { product: ProductsData }) => {
           color={"brown.300"}
           boxSize={6}
           ml={14}
+          onClick={() => {
+            removeProducts(product);
+          }}
         />
       </Flex>
     </>
