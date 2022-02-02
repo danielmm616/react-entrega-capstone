@@ -61,7 +61,6 @@ const CardSeller = ({ name, state, city }: User) => {
             </Box>
             <Stat>
               <Stat fontSize="30px">{state}</Stat>
-              {/* <Stat>{city}</Stat> */}
             </Stat>
           </Box>
         </Flex>
