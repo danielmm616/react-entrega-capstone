@@ -11,7 +11,7 @@ interface ProductsData {
   price: number;
   quantity: number;
   img: string;
-  id?: number;
+  id: number;
 }
 
 const CardCartC = ({ product }: { product: ProductsData }) => {

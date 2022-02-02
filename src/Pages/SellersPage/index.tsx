@@ -10,6 +10,8 @@ const Seller = () => {
   const token = localStorage.getItem("@ArteSana:token");
   const { user } = useAuth();
   const { cartProducts } = useCart();
+  const list = localStorage.getItem("Cart") || "";
+  const cartList = list ? JSON.parse(list) : [];
 
   if (!token) {
     return <Redirect to="/" />;
@@ -41,7 +43,7 @@ const Seller = () => {
           <CardSeller name={user.name} state={user.state} city={user.city} />
           <CardSeller name={user.name} state={user.state} city={user.city} />
 
-          <CartC list={cartProducts} />
+          <CartC list={cartList} />
         </Flex>
       </Flex>
     </>

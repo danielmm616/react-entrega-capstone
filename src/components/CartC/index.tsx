@@ -10,7 +10,7 @@ interface Product {
   img: string;
   category: string;
   price: number;
-  id?: number;
+  id: number;
 }
 
 interface CartCProps {
