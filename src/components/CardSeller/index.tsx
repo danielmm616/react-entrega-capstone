@@ -31,7 +31,6 @@ const CardSeller = ({ name, state, city }: User) => {
           background="#E5E5E5"
           p={3}
           color="black"
-          
         >
           <Box
             fontSize="25px"
@@ -40,7 +39,7 @@ const CardSeller = ({ name, state, city }: User) => {
             color="green.200"
             fontWeight={800}
           >
-            {(name = "yasmin")}
+            {name}
             <Box
               mt="30px"
               mb="30px"
@@ -61,8 +60,8 @@ const CardSeller = ({ name, state, city }: User) => {
               />
             </Box>
             <Stat>
-              <Stat fontSize="30px">{(state = "SP")}</Stat>
-              <Stat>{city}</Stat>
+              <Stat fontSize="30px">{state}</Stat>
+              {/* <Stat>{city}</Stat> */}
             </Stat>
           </Box>
         </Flex>

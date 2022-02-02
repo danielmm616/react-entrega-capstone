@@ -14,6 +14,7 @@ interface ProductsContextData {
   registerProducts: (product: ProductsData) => void;
   editProducts: (product: ProductsData) => void;
   deleteProducts: (id: number) => void;
+  sellers: SellersData[];
 }
 
 interface ProductsProviderProps {
@@ -29,6 +30,15 @@ interface ProductsData {
   id: number;
 }
 
+interface SellersData {
+  email: string;
+  password: string;
+  name: string;
+  state: string;
+  seller: boolean;
+  id: number;
+}
+
 const ProductsContext = createContext<ProductsContextData>(
   {} as ProductsContextData
 );
@@ -36,10 +46,21 @@ const ProductsContext = createContext<ProductsContextData>(
 export const ProductsProvider = ({ children }: ProductsProviderProps) => {
   const { authToken } = useAuth();
   const [products, setProducts] = useState<ProductsData[]>([]);
+  const [sellers, setSellers] = useState<SellersData[]>([]);
   const toast = useToast();
   useEffect(() => {
     api.get("/products").then((response) => setProducts(response.data));
   }, []);
+
+  useEffect(() => {
+    api
+      .get("/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => setSellers(response.data));
+  });
   const token = localStorage.getItem("@ArteSana:token");
   const userId = Number(localStorage.getItem("@userId"));
   const registerProducts = (product: ProductsData) => {
@@ -129,7 +150,13 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 
   return (
     <ProductsContext.Provider
-      value={{ products, registerProducts, editProducts, deleteProducts }}
+      value={{
+        products,
+        registerProducts,
+        editProducts,
+        deleteProducts,
+        sellers,
+      }}
     >
       {children}
     </ProductsContext.Provider>
