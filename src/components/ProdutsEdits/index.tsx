@@ -57,6 +57,7 @@ const ProdutsEdits = () => {
         flexDirection="row"
         justifyContent="space-evenly"
         maxW="1000px"
+        data-testid="productsEdits-element"
       >
         {products.map((produto) => (
           <Box

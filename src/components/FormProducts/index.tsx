@@ -59,7 +59,7 @@ const FormProducts = () => {
     <>
       <ButtonC onClick={onOpen} bg="green.200" text="+" />
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal data-testid="modal-element" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader color="green.200">Adicione seu Produto</ModalHeader>
