@@ -1,4 +1,17 @@
-import { Box, Text, Center, Flex, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Center,
+  Flex,
+  Stack,
+  Modal,
+  useDisclosure,
+  ModalOverlay,
+  ModalCloseButton,
+  ModalBody,
+  ModalHeader,
+  ModalContent,
+} from "@chakra-ui/react";
 import HeaderC from "../../components/HeaderC";
 import { useCart } from "../../Providers/CartContext";
 import ButtonC from "../../components/ButtonC";
@@ -8,6 +21,7 @@ const Cart = () => {
   const history = useHistory();
   const token = localStorage.getItem("@ArteSana:token");
   const { cartProducts } = useCart();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   // const product = {
   //   name: "Banana prata",
@@ -85,7 +99,28 @@ const Cart = () => {
             <Stack spacing={8}>
               <Text fontSize="2xl">Total</Text>
               <Text fontSize="2xl">R$</Text>
-              <ButtonC text="Finalizar compra" bg="green.200" />
+              <ButtonC
+                text="Finalizar compra"
+                bg="green.200"
+                onClick={onOpen}
+              />
+              <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader color="green.200">
+                    Pague com o QR-Code abaixo!
+                  </ModalHeader>
+                  <ModalCloseButton bg={"green.200"} />
+                  <ModalBody p={5}>
+                    <Center>
+                      <img
+                        src="https://qrtag.net/api/qr_4.png?url=https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+                        alt="qrtag"
+                      />
+                    </Center>
+                  </ModalBody>
+                </ModalContent>
+              </Modal>
             </Stack>
           </Box>
         </Flex>
