@@ -49,7 +49,7 @@ const CartC = ({ children }: CartCProps) => {
       >
         {children}
         {cartProducts.map((product) => (
-          <CardCartC product={product} />
+          <CardCartC key={product.name} product={product} />
         ))}
       </Box>
       <Flex mb="20px" justify="space-between" p="0 10px">

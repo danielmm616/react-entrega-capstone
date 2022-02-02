@@ -1,5 +1,5 @@
 import { Avatar, Box, Center, Flex, Icon, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useCart } from "../../Providers/CartContext";
 
@@ -15,7 +15,6 @@ interface ProductsData {
 
 const CardCartC = ({ product }: { product: ProductsData }) => {
   const { removeProducts } = useCart();
-  // const CardCartC = ({ name, quantity = 1, img }: ProductsData) => {
   const [count, setCount] = useState<number>(1);
 
   return (
