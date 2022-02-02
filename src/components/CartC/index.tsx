@@ -9,10 +9,17 @@ interface CartCProps {
   children: ReactNode;
 }
 
+interface ProductsData {
+  name: string;
+  category: string;
+  price: number;
+  quantity: number;
+  img: string;
+}
+
 const CartC = ({ children }: CartCProps) => {
   const { cartProducts } = useCart();
   const history = useHistory();
-
   return (
     <Box
       color="white"
@@ -41,15 +48,16 @@ const CartC = ({ children }: CartCProps) => {
         }}
       >
         {children}
-        {cartProducts.map((card) => (
-          <CardCartC {...card} />
+        {cartProducts.map((product) => (
+          <CardCartC product={product} />
         ))}
       </Box>
       <Flex mb="20px" justify="space-between" p="0 10px">
         <Text>Total</Text>
         <Text>
           {cartProducts.reduce(
-            (acc, product) => acc + product.price * product.quantity,
+            (acc, product) =>
+              acc + Number(product.price) * Number(product.quantity),
             0
           )}{" "}
           R$
