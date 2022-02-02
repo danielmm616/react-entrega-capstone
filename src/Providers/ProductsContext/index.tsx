@@ -72,10 +72,12 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
   };
 
   const editProducts = (product: ProductsData) => {
+    const body = { ...product, userId };
+    console.log(body);
     api
-      .patch("/products", product, {
+      .patch(`/products/${product.id}`, body, {
         headers: {
-          Authorization: `Bearer ${authToken}`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((_) =>
@@ -100,7 +102,11 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 
   const deleteProducts = (id: number) => {
     api
-      .delete(`/products/${id}`)
+      .delete(`/products/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((_) =>
         toast({
           position: "top",
