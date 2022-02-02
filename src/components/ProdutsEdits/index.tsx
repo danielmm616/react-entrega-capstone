@@ -2,7 +2,6 @@ import { useProducts } from "../../Providers/ProductsContext";
 import { Icon } from "@chakra-ui/react";
 import { BiTrash, BiEdit } from "react-icons/bi";
 import { Box, Image, Flex, Stat, StatNumber } from "@chakra-ui/react";
-// import ButtonC from "../ButtonC";
 
 import {
   Modal,
@@ -20,9 +19,7 @@ import {
   FormLabel,
 } from "@chakra-ui/react";
 
-// import { yupResolver }from '@hookform/resolvers/yup'
 import { useForm } from "react-hook-form";
-// import * as yup from 'yup';
 
 interface ProductsData {
   name: string;
@@ -57,31 +54,29 @@ const ProdutsEdits = () => {
         display="flex"
         flexWrap="wrap"
         flexDirection="row"
-        w="200px"
+        justifyContent="space-evenly"
+        maxW="1000px"
       >
-        <Flex
-          boxShadow="7px 7px 7px 0px rgba(0,0,0,0.22)"
-          rounded="lg"
-          bg="white"
-          h="290px"
-          w="200px"
-          justifyContent="center"
-          background="#E5E5E5"
-          p={3}
-          color="black"
-        >
           {products.map((produto) => (
             <Box
-              padding-bottom="2px"
-              key={produto.name}
-              color="green.200"
-              fontWeight={800}
+            background="#E5E5E5"  
+             boxShadow="7px 7px 7px 0px rgba(0,0,0,0.22)"
+            h="280px"
+            w="200px"
+            rounded="lg"
+            m="5px"
+            
+            padding-bottom="2px"
+            key={produto.name}
+            color="green.200"
+            fontWeight={800}
             >
               {produto.name}
               <Box display="flex" justifyContent="center" alignItems="center">
                 <Image
-                  mt="10px"
-                  mb="10px"
+                  background="#fff"
+                  mt="15px"
+                  mb="5px"
                   borderRadius="50%"
                   boxSize="120px"
                   src={produto.img}
@@ -89,9 +84,11 @@ const ProdutsEdits = () => {
                 />
               </Box>
               <Stat m="15px">
-                <StatNumber>R$ {produto.price.toFixed(2)}</StatNumber>
+                <StatNumber>R$ {produto.price}</StatNumber>
               </Stat>
               <Flex display="flex" justifyContent="space-around">
+
+
                 {/* Modal de Editar */}
                 <Icon
                   as={BiEdit}
@@ -154,7 +151,8 @@ const ProdutsEdits = () => {
                           <Input
                             text={produto.price}
                             {...register("price")}
-                            placeholder={produto.price.toFixed(2)}
+                            type="number"
+                            placeholder="preço"
                             _placeholder={{ color: "cream.400" }}
                           />
                           <FormErrorMessage>
@@ -192,7 +190,6 @@ const ProdutsEdits = () => {
               </Flex>
             </Box>
           ))}
-        </Flex>
       </Box>
     </>
   );
