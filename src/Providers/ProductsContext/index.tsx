@@ -7,7 +7,6 @@ import {
   useEffect,
 } from "react";
 import api from "../../services/Axios";
-import { useAuth } from "../AuthContext";
 
 interface ProductsContextData {
   products: ProductsData[];
@@ -44,7 +43,6 @@ const ProductsContext = createContext<ProductsContextData>(
 );
 
 export const ProductsProvider = ({ children }: ProductsProviderProps) => {
-  const { authToken } = useAuth();
   const [products, setProducts] = useState<ProductsData[]>([]);
   const [sellers, setSellers] = useState<SellersData[]>([]);
   const toast = useToast();

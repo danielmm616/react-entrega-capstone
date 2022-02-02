@@ -1,16 +1,12 @@
 import CardSeller from "../../components/CardSeller";
 import { Redirect } from "react-router-dom";
-import { useAuth } from "../../Providers/AuthContext";
 import HeaderC from "../../components/HeaderC";
-import { Text, Box, Flex, Stack, Center } from "@chakra-ui/react";
+import { Text, Flex } from "@chakra-ui/react";
 import CartC from "../../components/CartC";
-import { useCart } from "../../Providers/CartContext";
 import { useProducts } from "../../Providers/ProductsContext";
 
 const Seller = () => {
   const token = localStorage.getItem("@ArteSana:token");
-  const { user } = useAuth();
-  const { cartProducts } = useCart();
   const list = localStorage.getItem("Cart") || "";
   const cartList = list ? JSON.parse(list) : [];
   const { sellers } = useProducts();
@@ -36,14 +32,6 @@ const Seller = () => {
           justify="center"
           align="center"
         >
-          {/* <CardSeller name={user.name} state={user.state} city={user.city} />
-          <CardSeller name={user.name} state={user.state} city={user.city} />
-          <CardSeller name={user.name} state={user.state} city={user.city} />
-          <CardSeller name={user.name} state={user.state} city={user.city} />
-          <CardSeller name={user.name} state={user.state} city={user.city} />
-          <CardSeller name={user.name} state={user.state} city={user.city} />
-          <CardSeller name={user.name} state={user.state} city={user.city} />
-          <CardSeller name={user.name} state={user.state} city={user.city} /> */}
           {sellers.map((seller) => (
             <CardSeller
               name={seller.name}

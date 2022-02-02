@@ -30,7 +30,7 @@ const Cart = () => {
             Nada por aqui...
           </Text>
           <ButtonC
-            onClick={() => history.push("/vendedor")}
+            onClick={() => history.push("/sellerPage")}
             text="Ir às compras"
             bg="green.200"
           />

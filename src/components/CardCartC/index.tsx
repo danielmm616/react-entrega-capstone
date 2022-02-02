@@ -1,5 +1,5 @@
 import { Avatar, Box, Center, Flex, Icon, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useCart } from "../../Providers/CartContext";
 
@@ -16,7 +16,23 @@ interface ProductsData {
 
 const CardCartC = ({ product }: { product: ProductsData }) => {
   const { removeProducts } = useCart();
-  const [count, setCount] = useState<number>(1);
+  const [count, setCount] = useState<number>(
+    Number(localStorage.getItem(product.name) || 1)
+  );
+
+  const handleSubCarrinho = () => {
+    if (count > 1) {
+      setCount(count - 1);
+      product.quantity = count;
+      localStorage.setItem(product.name, JSON.stringify(count - 1));
+    }
+  };
+
+  const handleCarrinho = () => {
+    setCount(count + 1);
+    product.quantity = count;
+    localStorage.setItem(product.name, JSON.stringify(count + 1));
+  };
 
   return (
     <>
@@ -44,10 +60,7 @@ const CardCartC = ({ product }: { product: ProductsData }) => {
               bg={"#E71D36"}
               color={"cream.100"}
               _hover={{ bg: "#d90429" }}
-              onClick={() => {
-                count > 1 && setCount(count - 1);
-                product.quantity = count;
-              }}
+              onClick={handleSubCarrinho}
             >
               -
             </Center>
@@ -62,10 +75,7 @@ const CardCartC = ({ product }: { product: ProductsData }) => {
               bg={"green.200"}
               color={"cream.100"}
               _hover={{ bg: "green.300" }}
-              onClick={() => {
-                setCount(count + 1);
-                product.quantity = count;
-              }}
+              onClick={handleCarrinho}
             >
               +
             </Center>
@@ -80,6 +90,7 @@ const CardCartC = ({ product }: { product: ProductsData }) => {
           ml={14}
           onClick={() => {
             removeProducts(product);
+            localStorage.removeItem(product.name);
           }}
         />
       </Flex>

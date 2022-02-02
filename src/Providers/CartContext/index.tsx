@@ -30,8 +30,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartProducts, setCartProducts] = useState<ProductsData[]>(cartList);
   const toast = useToast();
 
-  console.log(cartProducts);
-
   const addProducts = (product: ProductsData) => {
     // setCartProducts([...cartProducts, product]);
     setCartProducts([...cartProducts, { ...product, quantity: 1 }]);
