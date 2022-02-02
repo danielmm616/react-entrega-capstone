@@ -24,7 +24,7 @@ const CardSeller = ({ name, state, city }: User) => {
           boxShadow="7px 7px 7px 0px rgba(0,0,0,0.22)"
           rounded="lg"
           bg="white"
-          onClick={() => history.push("/registerProducts")}
+          onClick={() => history.push("/shop")}
           h="290px"
           w="200px"
           justifyContent="center"

@@ -94,7 +94,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
   const logOut = () => {
     setAuthToken("");
     localStorage.clear();
-    history.push("/login");
+    history.push("/");
     toast({
       position: "top",
       title: "Volte sempre! ;D",

@@ -45,7 +45,7 @@ const HeaderC = () => {
           fontSize="40px"
           color="cream.100"
           cursor="pointer"
-          onClick={() => history.push("/sellerPage")}
+          onClick={() => history.push("/registerProducts")}
           _hover={{ transform: "scale(1.1)", transition: "0.5s" }}
         />
         <Icon

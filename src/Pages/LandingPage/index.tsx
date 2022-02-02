@@ -64,6 +64,14 @@ const LandingPage = () => {
           />
         </Stack>
       </Flex>
+      <Text
+        onClick={() => history.push("/aboutus")}
+        cursor={"pointer"}
+        marginTop={"30px"}
+        _hover={{ textDecoration: "underline" }}
+      >
+        Conheça o time Arte Sana
+      </Text>
     </Box>
   );
 };
