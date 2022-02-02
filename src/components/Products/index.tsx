@@ -17,6 +17,7 @@ const ProductAddToCart = () => {
         flexDirection="row"
         justifyContent="space-evenly"
         maxW="1000px"
+        data-testid="products-element"
       >
         {products.map((produto) => (
           <Box

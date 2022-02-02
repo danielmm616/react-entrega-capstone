@@ -18,6 +18,7 @@ const HeaderC = () => {
       justifyContent="space-around"
       alignItems="center"
       wrap="wrap"
+      data-testid="header-element"
     >
       <Flex direction="column" alignItems="center" justifyContent="center">
         <Image src={Logo} alt="Arte Sana" height="50%" width="100px" />
