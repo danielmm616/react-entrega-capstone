@@ -7,6 +7,17 @@ body {
 
 html{
   background-color: #F7F0F5;
+  overflow-x: clip;
+  
+}
+
+::-webkit-scrollbar{
+  width: 12px;
+  background-color: #E5E5E5;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #40916C;
+  border-radius: 8px;
 }
 
 code {

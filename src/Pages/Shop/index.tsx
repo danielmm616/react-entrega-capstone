@@ -16,7 +16,6 @@ const Shop = () => {
       <br />
       <Flex m={[8, 16]}>
         <ProductAddToCart />
-        <CartC>{}</CartC>
       </Flex>
     </>
   );

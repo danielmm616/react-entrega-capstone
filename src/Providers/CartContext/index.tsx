@@ -17,6 +17,7 @@ interface ProductsData {
   price: number;
   quantity: number;
   img: string;
+  id: number;
 }
 
 const CartContext = createContext<ProductsContextData>(
@@ -26,6 +27,8 @@ const CartContext = createContext<ProductsContextData>(
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartProducts, setCartProducts] = useState<ProductsData[]>([]);
   const toast = useToast();
+
+  console.log(cartProducts);
 
   const addProducts = (product: ProductsData) => {
     // setCartProducts([...cartProducts, product]);
