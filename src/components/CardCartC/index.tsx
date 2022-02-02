@@ -65,6 +65,7 @@ const CardCartC = ({ product }: { product: ProductsData }) => {
               onClick={() => {
                 setCount(count + 1);
                 product.quantity = count;
+                // product.quantity = count;
               }}
             >
               +
