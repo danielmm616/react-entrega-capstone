@@ -87,8 +87,7 @@ const Cart = () => {
             <Flex
               direction={["column", "row"]}
               wrap="wrap"
-              h="100%"
-              w="100%"
+              justify='center'
               overflowY="auto"
               overflowX="clip"
             >
