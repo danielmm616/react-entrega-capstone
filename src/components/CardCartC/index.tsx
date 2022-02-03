@@ -35,7 +35,7 @@ const CardCartC = ({ product }: { product: ProductsData }) => {
   };
 
   return (
-    <>
+    <Box m='10px'>
       <Flex
         w={"260px"}
         m={"auto"}
@@ -93,7 +93,7 @@ const CardCartC = ({ product }: { product: ProductsData }) => {
           }}
         />
       </Flex>
-    </>
+    </Box>
   );
 };
 
