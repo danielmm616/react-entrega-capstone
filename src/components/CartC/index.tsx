@@ -2,6 +2,7 @@ import { Box, Text, Flex, Center } from "@chakra-ui/react";
 import ButtonC from "../ButtonC";
 import { useHistory } from "react-router-dom";
 import CardCartC from "../CardCartC";
+import { useCart } from "../../Providers/CartContext";
 
 interface Product {
   name: string;
@@ -18,6 +19,8 @@ interface CartCProps {
 
 const CartC = ({ list }: CartCProps) => {
   const history = useHistory();
+  const { cart } = useCart();
+  console.log(cart);
 
   return (
     <Box
@@ -52,17 +55,31 @@ const CartC = ({ list }: CartCProps) => {
             },
           }}
         >
-          {list.length === 0 ? (
+          {cart.length === 0 ? (
             <Center>
               <Text color="green.300" fontSize="2xl" w="60%" mt="60px">
                 Nada no carrinho... compre algo bom e caseiro!
               </Text>
             </Center>
           ) : (
-            list.map((product) => <CardCartC product={product} />)
+            cart.map((product) => <CardCartC product={product} />)
           )}
         </Box>
-        <Flex mb="20px" justify="space-between" p="0 10px"></Flex>
+        <Flex mb="20px" justify="space-between" p="0 10px">
+          <Text>Total:</Text>
+          <Text>
+            R${" "}
+            {cart
+              .reduce(
+                (acc, element) =>
+                  acc +
+                  Number(String(element.price).replace(",", ".")) *
+                    Number(element.quantity),
+                0
+              )
+              .toFixed(2)}
+          </Text>
+        </Flex>
 
         <ButtonC
           onClick={() => history.push("/cart")}
