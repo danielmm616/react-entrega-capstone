@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Image } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import { BsCart3 } from "react-icons/bs";
 import { MdOutlineSell } from "react-icons/md";
 import { RiLogoutBoxRLine } from "react-icons/ri";
@@ -6,11 +6,13 @@ import Logo from "../../assets/ArteSanaLogo.png";
 import { useAuth } from "../../Providers/AuthContext";
 import { Icon } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+import { useCart } from "../../Providers/CartContext";
 
 const HeaderC = () => {
   const { logOut } = useAuth();
   const history = useHistory();
   const name = localStorage.getItem("@Username");
+  const { cart } = useCart();
 
   return (
     <Flex
@@ -61,6 +63,17 @@ const HeaderC = () => {
           onClick={() => history.push("/cart")}
           _hover={{ transform: "scale(1.1)", transition: "0.5s" }}
         />
+        {cart.length > 0 && (
+          <Text
+            bg={"green.200"}
+            h="20px"
+            w="20px"
+            borderRadius={"100%"}
+            marginLeft={"-40px"}
+          >
+            {cart.length}
+          </Text>
+        )}
         <Icon
           as={MdOutlineSell}
           fontSize="40px"
