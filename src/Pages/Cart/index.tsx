@@ -16,6 +16,7 @@ import HeaderC from "../../components/HeaderC";
 import { useCart } from "../../Providers/CartContext";
 import ButtonC from "../../components/ButtonC";
 import { Redirect, useHistory } from "react-router-dom";
+import CardCartC from "../../components/CardCartC";
 
 const Cart = () => {
   const history = useHistory();
@@ -34,7 +35,7 @@ const Cart = () => {
     return <Redirect to="/" />;
   }
 
-  if (cartProducts.length === 1) {
+  if (cartProducts.length === 0) {
     return (
       <Box bg="cream.100" w="100vw" h="100vh">
         <HeaderC />
@@ -82,7 +83,11 @@ const Cart = () => {
                 borderRadius: "8px",
               },
             }}
-          ></Box>
+          >
+            {cartProducts.map((product) => (
+              <CardCartC product={product} />
+            ))}
+          </Box>
 
           <Box
             w="210px"
@@ -98,7 +103,15 @@ const Cart = () => {
         </CartC> */}
             <Stack spacing={8}>
               <Text fontSize="2xl">Total</Text>
-              <Text fontSize="2xl">R$</Text>
+              <Text fontSize="2xl">
+                R${" "}
+                {cartProducts.reduce(
+                  (acc, att) =>
+                    acc +
+                    att.price * (Number(localStorage.getItem(att.name)) || 1),
+                  0
+                )}
+              </Text>
               <ButtonC
                 text="Finalizar compra"
                 bg="green.200"

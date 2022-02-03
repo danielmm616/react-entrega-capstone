@@ -20,7 +20,13 @@ const HeaderC = () => {
       wrap="wrap"
       data-testid="header-element"
     >
-      <Flex direction="column" alignItems="center" justifyContent="center">
+      <Flex
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        cursor={"pointer"}
+        onClick={() => history.push("shop")}
+      >
         <Image src={Logo} alt="Arte Sana" height="50%" width="100px" />
         <Heading fontWeight="regular" color="cream.100" marginTop="-16px">
           Arte Sana
