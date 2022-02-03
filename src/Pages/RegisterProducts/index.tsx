@@ -11,8 +11,6 @@ const RegisterProducts = () => {
 
   return (
     <>
-      <h2>Register Produtos</h2>
-      <br />
       <FormProducts />
       <ProdutsEdits />
     </>
