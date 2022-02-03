@@ -1,14 +1,21 @@
 import { Box, Flex, Image, Stat } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+import { useProducts } from "../../Providers/ProductsContext";
 
 interface User {
   name: string;
   state: string;
-  city: string;
+  id: number;
 }
 
-const CardSeller = ({ name, state, city }: User) => {
+const CardSeller = ({ name, state, id }: User) => {
   const history = useHistory();
+  const {getUserId} = useProducts()
+
+  function chooseSeller(userId:number){
+  getUserId(userId)
+  history.push('/shop')
+  }
 
   return (
     <>
@@ -24,7 +31,7 @@ const CardSeller = ({ name, state, city }: User) => {
           boxShadow="7px 7px 7px 0px rgba(0,0,0,0.22)"
           rounded="lg"
           bg="white"
-          onClick={() => history.push("/shop")}
+          onClick={() => chooseSeller(id)}
           h="290px"
           w="200px"
           justifyContent="center"
@@ -54,7 +61,7 @@ const CardSeller = ({ name, state, city }: User) => {
                 borderRadius="50%"
                 boxSize="120px"
                 src={
-                  "https://i.pinimg.com/originals/31/49/06/3149064b2ba03c557e30efbc7b30a114.png"
+                  "https://thumbs.dreamstime.com/b/homem-do-fazendeiro-da-vila-no-chap%C3%A9u-de-palha-17126306.jpg"
                 }
                 alt={""}
               />

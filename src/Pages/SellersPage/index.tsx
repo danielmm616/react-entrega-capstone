@@ -21,7 +21,7 @@ const Seller = () => {
       <Text fontSize="3xl" mt="10px">
         Escolha seu artesão
       </Text>
-      <Flex w="95vw" mt="10px" alignItems="center">
+      <Flex w="95vw" mt="10px" alignItems="center" >
         <Flex
           w={["90vw", "90vw", "90vw", "60vw"]}
           h="100%"
@@ -36,7 +36,7 @@ const Seller = () => {
             <CardSeller
               name={seller.name}
               state={seller.state}
-              city={seller.name}
+              id={seller.id}
             />
           ))}
           <CartC list={cartList} />
