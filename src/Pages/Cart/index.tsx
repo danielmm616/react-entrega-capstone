@@ -3,6 +3,7 @@ import HeaderC from "../../components/HeaderC";
 import { useCart } from "../../Providers/CartContext";
 import ButtonC from "../../components/ButtonC";
 import { Redirect, useHistory } from "react-router-dom";
+import CardCartC from "../../components/CardCartC";
 
 const Cart = () => {
   const history = useHistory();
@@ -68,7 +69,14 @@ const Cart = () => {
                 borderRadius: "8px",
               },
             }}
-          ></Box>
+          >
+            <Flex direction={['column',  'row']} wrap='wrap' h='100%' w='100%' overflowY='auto' overflowX='clip'>
+
+            {cartProducts.map((product) => (
+              <CardCartC product={product} />
+              ))}
+              </Flex>
+          </Box>
 
           <Box
             w="210px"
@@ -79,9 +87,7 @@ const Cart = () => {
             p="10px"
             boxShadow="lg"
           >
-            {/* <CartC>
-
-        </CartC> */}
+            
             <Stack spacing={8}>
               <Text fontSize="2xl">Total</Text>
               <Text fontSize="2xl">R$</Text>
