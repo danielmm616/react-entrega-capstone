@@ -98,6 +98,7 @@ const FormProducts = () => {
                 Categoria
                 <Select
                   placeholder="Selecione uma categoria"
+                  _placeholder={{ color: "cream.300" }}
                   {...register("category")}
                 >
                   <option value="frutas">Frutas</option>
@@ -106,11 +107,6 @@ const FormProducts = () => {
                   <option value="artesanato">Artesanato</option>
                   <option value="outros">Outros</option>
                 </Select>
-                {/* <Input
-                  {...register("category")}
-                  placeholder="Categoria"
-                  _placeholder={{ color: "cream.300" }}
-                /> */}
                 <FormErrorMessage>{errors.category?.message}</FormErrorMessage>
               </FormLabel>
 
