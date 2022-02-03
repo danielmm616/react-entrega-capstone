@@ -17,6 +17,7 @@ import {
   FormErrorMessage,
   Button,
   FormLabel,
+  Select,
 } from "@chakra-ui/react";
 
 import { useForm } from "react-hook-form";
@@ -134,11 +135,17 @@ const ProdutsEdits = () => {
 
                       <FormLabel color="green.200">
                         Categoria
-                        <Input
-                          {...register("category")}
-                          placeholder={produto.category}
+                        <Select
+                          placeholder="Selecione uma categoria"
                           _placeholder={{ color: "cream.400" }}
-                        />
+                          {...register("category")}
+                        >
+                          <option value="frutas">Frutas</option>
+                          <option value="legumes">Legumes</option>
+                          <option value="verduras">Verduras</option>
+                          <option value="artesanato">Artesanato</option>
+                          <option value="outros">Outros</option>
+                        </Select>
                         <FormErrorMessage>
                           {errors.category?.message}
                         </FormErrorMessage>
