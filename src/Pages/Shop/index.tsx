@@ -16,9 +16,20 @@ const Shop = () => {
   return (
     <>
       <HeaderC />
-      <br />
-      <Flex m={[8, 16]}>
-        <ProductAddToCart />
+
+      <Flex w="95vw" mt="10px" alignItems="center">
+        <Flex
+          w={["90vw", "90vw", "90vw", "60vw"]}
+          h="100%"
+          ml={["5vw", "20px"]}
+          mr={["0", "20px"]}
+          minW="300px"
+          wrap="wrap"
+          justify="center"
+          align="center"
+        >
+          <ProductAddToCart />
+        </Flex>
         <CartC list={cartProducts} />
       </Flex>
     </>

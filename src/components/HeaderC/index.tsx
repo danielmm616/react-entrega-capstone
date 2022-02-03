@@ -29,7 +29,16 @@ const HeaderC = () => {
           cursor={"pointer"}
           onClick={() => history.push("/sellerPage")}
         >
-          <Image src={Logo} alt="Arte Sana" height="72%" width="100px" />
+          <Image
+            src={Logo}
+            alt="Arte Sana"
+            height="72%"
+            width="100px"
+            _hover={{
+              transform: "scale(1.05)",
+              transition: "0.3s",
+            }}
+          />
           <Heading fontWeight="regular" color="cream.100" marginTop="-16px">
             Arte Sana
           </Heading>
