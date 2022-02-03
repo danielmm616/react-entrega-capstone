@@ -5,8 +5,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html{
-  background-color: #F7F0F5;
+html, body{
   overflow-x: clip;
   
 }

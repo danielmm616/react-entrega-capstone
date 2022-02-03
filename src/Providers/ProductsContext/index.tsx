@@ -14,6 +14,7 @@ interface ProductsContextData {
   editProducts: (product: ProductsData) => void;
   deleteProducts: (id: number) => void;
   sellers: SellersData[];
+  getUserId: (id:number) => void;
 }
 
 interface ProductsProviderProps {
@@ -46,9 +47,15 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
   const [products, setProducts] = useState<ProductsData[]>([]);
   const [sellers, setSellers] = useState<SellersData[]>([]);
   const toast = useToast();
+  const [productsUserId, setProductsUserId] = useState(0)
+
   useEffect(() => {
-    api.get("/products").then((response) => setProducts(response.data));
-  }, []);
+    api.get(`/products?userId=${productsUserId}`).then((response) => setProducts(response.data));
+  }, [productsUserId]);
+
+  const getUserId = (id: number) => {
+    setProductsUserId(id)
+  }
 
   useEffect(() => {
     api
@@ -61,6 +68,8 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
   });
   const token = localStorage.getItem("@ArteSana:token");
   const userId = Number(localStorage.getItem("@userId"));
+
+
   const registerProducts = (product: ProductsData) => {
     const { name, category, price, img, id } = product;
     const corpo = { name, category, price, img, id, userId };
@@ -154,6 +163,7 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
         editProducts,
         deleteProducts,
         sellers,
+        getUserId
       }}
     >
       {children}
