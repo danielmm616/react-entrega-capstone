@@ -15,7 +15,7 @@ interface ProductsData {
 }
 
 const CardCartC = ({ product }: { product: ProductsData }) => {
-  const { removeProducts } = useCart();
+  const { subProducts, addQuantity, subQuantity } = useCart();
   const [count, setCount] = useState<number>(
     Number(localStorage.getItem(product.name) || 1)
   );
@@ -60,12 +60,12 @@ const CardCartC = ({ product }: { product: ProductsData }) => {
               bg={"#E71D36"}
               color={"cream.100"}
               _hover={{ bg: "#d90429" }}
-              onClick={handleSubCarrinho}
+              onClick={() => subQuantity(product)}
             >
               -
             </Center>
             <Text mx={3} color={"brown.300"}>
-              {count}
+              {product.quantity}
             </Text>
             <Center
               as="button"
@@ -75,7 +75,7 @@ const CardCartC = ({ product }: { product: ProductsData }) => {
               bg={"green.200"}
               color={"cream.100"}
               _hover={{ bg: "green.300" }}
-              onClick={handleCarrinho}
+              onClick={() => addQuantity(product)}
             >
               +
             </Center>
@@ -89,8 +89,7 @@ const CardCartC = ({ product }: { product: ProductsData }) => {
           boxSize={6}
           ml={14}
           onClick={() => {
-            removeProducts(product);
-            localStorage.removeItem(product.name);
+            subProducts(product);
           }}
         />
       </Flex>

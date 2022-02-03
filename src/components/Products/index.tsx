@@ -6,7 +6,7 @@ import { Box, Image, Flex, Stat, StatNumber, Button } from "@chakra-ui/react";
 
 const ProductAddToCart = () => {
   const { products } = useProducts();
-  const { addProducts } = useCart();
+  const { addCart } = useCart();
 
   return (
     <>
@@ -55,7 +55,7 @@ const ProductAddToCart = () => {
               color="white"
               width="200px"
               mt="7px"
-              onClick={() => addProducts(produto)}
+              onClick={() => addCart(produto)}
               bg="green.200"
             >
               Adicionar
