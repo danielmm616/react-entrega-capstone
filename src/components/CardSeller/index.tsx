@@ -1,6 +1,8 @@
 import { Box, Flex, Image, Stat } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { useProducts } from "../../Providers/ProductsContext";
+import Gabriel from "../../assets/gabs.jpeg";
+import Vilson from "../../assets/viu.jpeg";
 
 interface User {
   name: string;
@@ -61,7 +63,8 @@ const CardSeller = ({ name, state, id }: User) => {
                 borderRadius="100%"
                 boxSize="120px"
                 src={
-                  "https://thumbs.dreamstime.com/b/homem-do-fazendeiro-da-vila-no-chap%C3%A9u-de-palha-17126306.jpg"
+                  //"https://thumbs.dreamstime.com/b/homem-do-fazendeiro-da-vila-no-chap%C3%A9u-de-palha-17126306.jpg"
+                  id % 2 === 0 ? Gabriel : Vilson
                 }
                 alt={""}
               />
