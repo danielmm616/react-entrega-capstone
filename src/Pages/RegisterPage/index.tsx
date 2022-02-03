@@ -142,7 +142,15 @@ const RegisterPage = () => {
             <FormErrorMessage>
               {errors.confirmPassword?.message}
             </FormErrorMessage>
-            <Select {...register("state")}>
+            <Select
+              h="45px"
+              w="80%"
+              marginBottom={"20px"}
+              m="0 auto"
+              bg={"brown.200"}
+              color={"cream.400"}
+              {...register("state")}
+            >
               <option value="AC">Acre</option>
               <option value="AL">Alagoas</option>
               <option value="AP">Amapá</option>
@@ -189,6 +197,7 @@ const RegisterPage = () => {
               h="45px"
               w="80%"
               marginBottom={"20px"}
+              marginTop="20px"
               bg={"brown.200"}
               _placeholder={{ color: "cream.100" }}
               color={"cream.100"}
