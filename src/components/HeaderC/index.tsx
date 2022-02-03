@@ -1,4 +1,4 @@
-import { Flex, Heading, Image } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image } from "@chakra-ui/react";
 import { BsCart3 } from "react-icons/bs";
 import { MdOutlineSell } from "react-icons/md";
 import { RiLogoutBoxRLine } from "react-icons/ri";
@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 const HeaderC = () => {
   const { logOut } = useAuth();
   const history = useHistory();
+  const name = localStorage.getItem("@Username");
 
   return (
     <Flex
@@ -20,18 +21,23 @@ const HeaderC = () => {
       wrap="wrap"
       data-testid="header-element"
     >
-      <Flex
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        cursor={"pointer"}
-        onClick={() => history.push("shop")}
-      >
-        <Image src={Logo} alt="Arte Sana" height="50%" width="100px" />
-        <Heading fontWeight="regular" color="cream.100" marginTop="-16px">
-          Arte Sana
+      <Box display={"flex"} h="100%" alignItems={"center"}>
+        <Flex
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          cursor={"pointer"}
+          onClick={() => history.push("/sellerPage")}
+        >
+          <Image src={Logo} alt="Arte Sana" height="72%" width="100px" />
+          <Heading fontWeight="regular" color="cream.100" marginTop="-16px">
+            Arte Sana
+          </Heading>
+        </Flex>
+        <Heading color={"cream.100"} marginLeft={"10px"}>
+          Olá, {name}
         </Heading>
-      </Flex>
+      </Box>
       <Flex
         color="cream.100"
         w="200px"
