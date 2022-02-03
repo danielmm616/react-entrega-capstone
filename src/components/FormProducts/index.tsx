@@ -19,8 +19,13 @@ import {
   FormErrorMessage,
   Button,
   FormLabel,
+<<<<<<< HEAD
   Select,
+=======
+  Text
+>>>>>>> Developer
 } from "@chakra-ui/react";
+import HeaderC from "../HeaderC";
 
 interface ProductsData {
   name: string;
@@ -58,7 +63,10 @@ const FormProducts = () => {
 
   return (
     <>
-      <ButtonC onClick={onOpen} bg="green.200" text="+" />
+    <HeaderC />
+    <Text fontWeight='700' m='5px' padding='5px'fontSize='25px'>Meus Produtos
+       <ButtonC onClick={onOpen} bg="green.200" text="+" />
+    </Text>
 
       <Modal data-testid="modal-element" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -104,8 +112,8 @@ const FormProducts = () => {
                   {...register("category")}
                   placeholder="Categoria"
                   _placeholder={{ color: "cream.300" }}
-                />
-                <FormErrorMessage>{errors.category?.message}</FormErrorMessage> */}
+                /> */}
+                <FormErrorMessage>{errors.category?.message}</FormErrorMessage>
               </FormLabel>
 
               <FormLabel color="green.200">
@@ -118,7 +126,7 @@ const FormProducts = () => {
                 <FormErrorMessage>{errors.price?.message}</FormErrorMessage>
               </FormLabel>
 
-              <ModalFooter>
+              <ModalFooter display='flex' justifyContent='space-between'>
                 <ButtonC type="submit" bg="green.200" text="Save" />
                 <Button onClick={onClose}>Cancel</Button>
               </ModalFooter>

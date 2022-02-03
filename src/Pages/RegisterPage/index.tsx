@@ -179,8 +179,8 @@ const RegisterPage = () => {
               bg={"brown.200"}
               _placeholder={{ color: "cream.100" }}
               color={"cream.100"}
-            />
-            <FormErrorMessage>{errors.state?.message}</FormErrorMessage> */}
+            /> */}
+            <FormErrorMessage>{errors.state?.message}</FormErrorMessage>
             <Input
               {...register("city")}
               placeholder="Selecione a cidade"
