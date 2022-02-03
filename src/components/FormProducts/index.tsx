@@ -19,11 +19,8 @@ import {
   FormErrorMessage,
   Button,
   FormLabel,
-<<<<<<< HEAD
   Select,
-=======
-  Text
->>>>>>> Developer
+  Text,
 } from "@chakra-ui/react";
 import HeaderC from "../HeaderC";
 
@@ -63,10 +60,11 @@ const FormProducts = () => {
 
   return (
     <>
-    <HeaderC />
-    <Text fontWeight='700' m='5px' padding='5px'fontSize='25px'>Meus Produtos
-       <ButtonC onClick={onOpen} bg="green.200" text="+" />
-    </Text>
+      <HeaderC />
+      <Text fontWeight="700" m="5px" padding="5px" fontSize="25px">
+        Meus Produtos
+        <ButtonC onClick={onOpen} bg="green.200" text="+" />
+      </Text>
 
       <Modal data-testid="modal-element" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -126,7 +124,7 @@ const FormProducts = () => {
                 <FormErrorMessage>{errors.price?.message}</FormErrorMessage>
               </FormLabel>
 
-              <ModalFooter display='flex' justifyContent='space-between'>
+              <ModalFooter display="flex" justifyContent="space-between">
                 <ButtonC type="submit" bg="green.200" text="Save" />
                 <Button onClick={onClose}>Cancel</Button>
               </ModalFooter>
