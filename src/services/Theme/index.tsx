@@ -1,5 +1,17 @@
 import { extendTheme } from "@chakra-ui/react";
 
+const Select = {
+  parts: ["field", "icon"],
+  baseStyle: {
+    field: {
+      color: "cream.100",
+    },
+    icon: {
+      color: "cream.100"
+    },
+  },
+};
+
 const theme = extendTheme({
   fonts: {
     heading: "Outfit",
@@ -29,6 +41,9 @@ const theme = extendTheme({
       200: "#40916C",
       300: "#22724D",
     },
+  },
+  components: {
+    Select,
   },
 });
 

@@ -148,37 +148,36 @@ const RegisterPage = () => {
               marginBottom={"20px"}
               m="0 auto"
               bg={"brown.200"}
-              color={"cream.400"}
               {...register("state")}
             >
-              <option value="AC">Acre</option>
-              <option value="AL">Alagoas</option>
-              <option value="AP">Amapá</option>
-              <option value="AM">Amazonas</option>
-              <option value="BA">Bahia</option>
-              <option value="CE">Ceará</option>
-              <option value="DF">Distrito Federal</option>
-              <option value="ES">Espírito Santo</option>
-              <option value="GO">Goiás</option>
-              <option value="MA">Maranhão</option>
-              <option value="MT">Mato Grosso</option>
-              <option value="MS">Mato Grosso do Sul</option>
-              <option value="MG">Minas Gerais</option>
-              <option value="PA">Pará</option>
-              <option value="PB">Paraíba</option>
-              <option value="PR">Paraná</option>
-              <option value="PE">Pernambuco</option>
-              <option value="PI">Piauí</option>
-              <option value="RJ">Rio de Janeiro</option>
-              <option value="RN">Rio Grande do Norte</option>
-              <option value="RS">Rio Grande do Sul</option>
-              <option value="RO">Rondônia</option>
-              <option value="RR">Roraima</option>
-              <option value="SC">Santa Catarina</option>
-              <option value="SP">São Paulo</option>
-              <option value="SE">Sergipe</option>
-              <option value="TO">Tocantins</option>
-              <option value="IT">Itália</option>
+              <option style={{ backgroundColor:'#22724D' }} value="AC">Acre</option>
+              <option style={{ backgroundColor:'#22724D' }} value="AL">Alagoas</option>
+              <option style={{ backgroundColor:'#22724D' }} value="AP">Amapá</option>
+              <option style={{ backgroundColor:'#22724D' }} value="AM">Amazonas</option>
+              <option style={{ backgroundColor:'#22724D' }} value="BA">Bahia</option>
+              <option style={{ backgroundColor:'#22724D' }} value="CE">Ceará</option>
+              <option style={{ backgroundColor:'#22724D' }} value="DF">Distrito Federal</option>
+              <option style={{ backgroundColor:'#22724D' }} value="ES">Espírito Santo</option>
+              <option style={{ backgroundColor:'#22724D' }} value="GO">Goiás</option>
+              <option style={{ backgroundColor:'#22724D' }} value="MA">Maranhão</option>
+              <option style={{ backgroundColor:'#22724D' }} value="MT">Mato Grosso</option>
+              <option style={{ backgroundColor:'#22724D' }} value="MS">Mato Grosso do Sul</option>
+              <option style={{ backgroundColor:'#22724D' }} value="MG">Minas Gerais</option>
+              <option style={{ backgroundColor:'#22724D' }} value="PA">Pará</option>
+              <option style={{ backgroundColor:'#22724D' }} value="PB">Paraíba</option>
+              <option style={{ backgroundColor:'#22724D' }} value="PR">Paraná</option>
+              <option style={{ backgroundColor:'#22724D' }} value="PE">Pernambuco</option>
+              <option style={{ backgroundColor:'#22724D' }} value="PI">Piauí</option>
+              <option style={{ backgroundColor:'#22724D' }} value="RJ">Rio de Janeiro</option>
+              <option style={{ backgroundColor:'#22724D' }} value="RN">Rio Grande do Norte</option>
+              <option style={{ backgroundColor:'#22724D' }} value="RS">Rio Grande do Sul</option>
+              <option style={{ backgroundColor:'#22724D' }} value="RO">Rondônia</option>
+              <option style={{ backgroundColor:'#22724D' }} value="RR">Roraima</option>
+              <option style={{ backgroundColor:'#22724D' }} value="SC">Santa Catarina</option>
+              <option style={{ backgroundColor:'#22724D' }} value="SP">São Paulo</option>
+              <option style={{ backgroundColor:'#22724D' }} value="SE">Sergipe</option>
+              <option style={{ backgroundColor:'#22724D' }} value="TO">Tocantins</option>
+              <option style={{ backgroundColor:'#22724D' }} value="IT">Itália</option>
             </Select>
             {/* <Input
               {...register("state")}
@@ -193,7 +192,7 @@ const RegisterPage = () => {
             <FormErrorMessage>{errors.state?.message}</FormErrorMessage>
             <Input
               {...register("city")}
-              placeholder="Selecione a cidade"
+              placeholder="Informe sua cidade"
               h="45px"
               w="80%"
               marginBottom={"20px"}
