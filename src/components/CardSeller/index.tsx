@@ -10,11 +10,11 @@ interface User {
 
 const CardSeller = ({ name, state, id }: User) => {
   const history = useHistory();
-  const {getUserId} = useProducts()
+  const { getUserId } = useProducts();
 
-  function chooseSeller(userId:number){
-  getUserId(userId)
-  history.push('/shop')
+  function chooseSeller(userId: number) {
+    getUserId(userId);
+    history.push("/shop");
   }
 
   return (
@@ -52,13 +52,13 @@ const CardSeller = ({ name, state, id }: User) => {
               mb="30px"
               bg="white"
               display="flex"
-              borderRadius="50%"
               justifyContent="center"
+              background="#E5E5E5"
               alignItems="center"
             >
               <Image
                 border="solid #E5E5E5 1px"
-                borderRadius="50%"
+                borderRadius="100%"
                 boxSize="120px"
                 src={
                   "https://thumbs.dreamstime.com/b/homem-do-fazendeiro-da-vila-no-chap%C3%A9u-de-palha-17126306.jpg"
@@ -67,7 +67,7 @@ const CardSeller = ({ name, state, id }: User) => {
               />
             </Box>
             <Stat>
-              <Stat fontSize="25px">{state}</Stat>
+              <Stat fontSize="20px">{state}</Stat>
             </Stat>
           </Box>
         </Flex>

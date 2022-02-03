@@ -19,7 +19,11 @@ import {
   FormErrorMessage,
   Button,
   FormLabel,
+<<<<<<< HEAD
+  Select,
+=======
   Text
+>>>>>>> Developer
 } from "@chakra-ui/react";
 import HeaderC from "../HeaderC";
 
@@ -94,11 +98,21 @@ const FormProducts = () => {
 
               <FormLabel color="green.200">
                 Categoria
-                <Input
+                <Select
+                  placeholder="Selecione uma categoria"
+                  {...register("category")}
+                >
+                  <option value="frutas">Frutas</option>
+                  <option value="legumes">Legumes</option>
+                  <option value="verduras">Verduras</option>
+                  <option value="artesanato">Artesanato</option>
+                  <option value="outros">Outros</option>
+                </Select>
+                {/* <Input
                   {...register("category")}
                   placeholder="Categoria"
                   _placeholder={{ color: "cream.300" }}
-                />
+                /> */}
                 <FormErrorMessage>{errors.category?.message}</FormErrorMessage>
               </FormLabel>
 
