@@ -21,7 +21,7 @@ const HeaderC = () => {
       wrap="wrap"
       data-testid="header-element"
     >
-      <Box display={"flex"} h="100%" alignItems={"center"}>
+      <Box display={"flex"} h="100%" alignItems={"center"} wrap="wrap">
         <Flex
           direction="column"
           alignItems="center"
@@ -43,7 +43,7 @@ const HeaderC = () => {
             Arte Sana
           </Heading>
         </Flex>
-        <Heading color={"cream.100"} marginLeft={"10px"}>
+        <Heading color={"cream.100"} marginLeft={"10px"} fontWeight={"600"}>
           Olá, {name}
         </Heading>
       </Box>

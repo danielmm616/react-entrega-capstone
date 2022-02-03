@@ -84,9 +84,18 @@ const Cart = () => {
               },
             }}
           >
-            {cart.map((product) => (
-              <CardCartC product={product} />
-            ))}
+            <Flex
+              direction={["column", "row"]}
+              wrap="wrap"
+              h="100%"
+              w="100%"
+              overflowY="auto"
+              overflowX="clip"
+            >
+              {cart.map((product) => (
+                <CardCartC product={product} />
+              ))}
+            </Flex>
           </Box>
 
           <Box
@@ -98,9 +107,6 @@ const Cart = () => {
             p="10px"
             boxShadow="lg"
           >
-            {/* <CartC>
-
-        </CartC> */}
             <Stack spacing={8}>
               <Text fontSize="2xl">Total</Text>
               <Text fontSize="2xl">
