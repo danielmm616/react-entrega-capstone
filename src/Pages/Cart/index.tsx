@@ -21,7 +21,7 @@ import CardCartC from "../../components/CardCartC";
 const Cart = () => {
   const history = useHistory();
   const token = localStorage.getItem("@ArteSana:token");
-  const { cartProducts } = useCart();
+  const { cartProducts, cart } = useCart();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   // const product = {
@@ -35,7 +35,7 @@ const Cart = () => {
     return <Redirect to="/" />;
   }
 
-  if (cartProducts.length === 0) {
+  if (cart.length === 0) {
     return (
       <Box bg="cream.100" w="100vw" h="100vh">
         <HeaderC />
@@ -84,7 +84,7 @@ const Cart = () => {
               },
             }}
           >
-            {cartProducts.map((product) => (
+            {cart.map((product) => (
               <CardCartC product={product} />
             ))}
           </Box>
@@ -105,12 +105,15 @@ const Cart = () => {
               <Text fontSize="2xl">Total</Text>
               <Text fontSize="2xl">
                 R${" "}
-                {cartProducts.reduce(
-                  (acc, att) =>
-                    acc +
-                    att.price * (Number(localStorage.getItem(att.name)) || 1),
-                  0
-                )}
+                {cart
+                  .reduce(
+                    (acc, element) =>
+                      acc +
+                      Number(String(element.price).replace(",", ".")) *
+                        Number(element.quantity),
+                    0
+                  )
+                  .toFixed(2)}
               </Text>
               <ButtonC
                 text="Finalizar compra"

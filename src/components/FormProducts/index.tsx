@@ -19,7 +19,8 @@ import {
   FormErrorMessage,
   Button,
   FormLabel,
-  Text
+  Select,
+  Text,
 } from "@chakra-ui/react";
 import HeaderC from "../HeaderC";
 
@@ -59,10 +60,11 @@ const FormProducts = () => {
 
   return (
     <>
-    <HeaderC />
-    <Text fontWeight='700' m='5px' padding='5px'fontSize='25px'>Meus Produtos
-       <ButtonC onClick={onOpen} bg="green.200" text="+" />
-    </Text>
+      <HeaderC />
+      <Text fontWeight="700" m="5px" padding="5px" fontSize="25px">
+        Meus Produtos
+        <ButtonC onClick={onOpen} bg="green.200" text="+" />
+      </Text>
 
       <Modal data-testid="modal-element" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -94,11 +96,21 @@ const FormProducts = () => {
 
               <FormLabel color="green.200">
                 Categoria
-                <Input
+                <Select
+                  placeholder="Selecione uma categoria"
+                  {...register("category")}
+                >
+                  <option value="frutas">Frutas</option>
+                  <option value="legumes">Legumes</option>
+                  <option value="verduras">Verduras</option>
+                  <option value="artesanato">Artesanato</option>
+                  <option value="outros">Outros</option>
+                </Select>
+                {/* <Input
                   {...register("category")}
                   placeholder="Categoria"
                   _placeholder={{ color: "cream.300" }}
-                />
+                /> */}
                 <FormErrorMessage>{errors.category?.message}</FormErrorMessage>
               </FormLabel>
 
@@ -112,7 +124,7 @@ const FormProducts = () => {
                 <FormErrorMessage>{errors.price?.message}</FormErrorMessage>
               </FormLabel>
 
-              <ModalFooter display='flex' justifyContent='space-between'>
+              <ModalFooter display="flex" justifyContent="space-between">
                 <ButtonC type="submit" bg="green.200" text="Save" />
                 <Button onClick={onClose}>Cancel</Button>
               </ModalFooter>
