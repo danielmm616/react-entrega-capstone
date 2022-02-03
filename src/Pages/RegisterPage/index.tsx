@@ -24,6 +24,7 @@ interface UserData {
   confirmPassword?: string;
   state: string;
   city: string;
+  seller?: boolean;
 }
 
 const RegisterPage = () => {
@@ -52,7 +53,8 @@ const RegisterPage = () => {
 
   const onSubmitFunction = (user: UserData) => {
     delete user.confirmPassword;
-    registerUser(user);
+    const newUser = { ...user, seller: false };
+    registerUser(newUser);
     console.log("onSubFunc user", user);
   };
 

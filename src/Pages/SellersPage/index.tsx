@@ -4,12 +4,17 @@ import HeaderC from "../../components/HeaderC";
 import { Text, Flex } from "@chakra-ui/react";
 import CartC from "../../components/CartC";
 import { useProducts } from "../../Providers/ProductsContext";
+import { useEffect } from "react";
 
 const Seller = () => {
-  const token = localStorage.getItem("@ArteSana:token");
+  const token = localStorage.getItem("@ArteSana:token") || "";
   const list = localStorage.getItem("Cart") || "";
   const cartList = list ? JSON.parse(list) : [];
-  const { sellers } = useProducts();
+  const { sellers, getSellers } = useProducts();
+
+  useEffect(() => {
+    getSellers(token);
+  }, []);
 
   if (!token) {
     return <Redirect to="/" />;
@@ -21,7 +26,7 @@ const Seller = () => {
       <Text fontSize="3xl" mt="10px">
         Escolha seu artesão
       </Text>
-      <Flex w="95vw" mt="10px" alignItems="center" >
+      <Flex w="95vw" mt="10px" alignItems="center">
         <Flex
           w={["90vw", "90vw", "90vw", "60vw"]}
           h="100%"

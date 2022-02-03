@@ -5,6 +5,7 @@ import {
   useState,
   ReactNode,
   useEffect,
+  useCallback,
 } from "react";
 import api from "../../services/Axios";
 
@@ -14,7 +15,8 @@ interface ProductsContextData {
   editProducts: (product: ProductsData) => void;
   deleteProducts: (id: number) => void;
   sellers: SellersData[];
-  getUserId: (id:number) => void;
+  getUserId: (id: number) => void;
+  getSellers: (accessToken: string) => void;
 }
 
 interface ProductsProviderProps {
@@ -47,28 +49,40 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
   const [products, setProducts] = useState<ProductsData[]>([]);
   const [sellers, setSellers] = useState<SellersData[]>([]);
   const toast = useToast();
-  const [productsUserId, setProductsUserId] = useState(0)
-
-  useEffect(() => {
-    api.get(`/products?userId=${productsUserId}`).then((response) => setProducts(response.data));
-  }, [productsUserId]);
-
-  const getUserId = (id: number) => {
-    setProductsUserId(id)
-  }
-
-  useEffect(() => {
-    api
-      .get("/users", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => setSellers(response.data));
-  });
+  const [productsUserId, setProductsUserId] = useState(0);
   const token = localStorage.getItem("@ArteSana:token");
   const userId = Number(localStorage.getItem("@userId"));
 
+  useEffect(() => {
+    api
+      .get(`/products?userId=${productsUserId}`)
+      .then((response) => setProducts(response.data));
+  }, [productsUserId]);
+
+  const getUserId = (id: number) => {
+    setProductsUserId(id);
+  };
+
+  const getSellers = useCallback((accessToken: string) => {
+    api
+      .get("/users", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((response) => setSellers(response.data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  // useEffect(() => {
+  //   api
+  //     .get("/users", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then((response) => setSellers(response.data));
+  // }, [token]);
 
   const registerProducts = (product: ProductsData) => {
     const { name, category, price, img, id } = product;
@@ -163,7 +177,8 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
         editProducts,
         deleteProducts,
         sellers,
-        getUserId
+        getSellers,
+        getUserId,
       }}
     >
       {children}
