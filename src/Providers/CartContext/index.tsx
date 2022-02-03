@@ -46,8 +46,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartProducts, setCartProducts] = useState<ProductsData[]>(cartList);
   const toast = useToast();
 
-  // COMEČA AS MUDAČAS AQUI
-
   const [cart, setCart] = useState<Product[]>(
     JSON.parse(localStorage.getItem("@Arte:cart") || "[]")
   );
@@ -94,10 +92,8 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     setCart([...copyArr]);
   };
 
-  // TERMINA AQUI AS MUDANČAS
 
   const addProducts = (product: ProductsData) => {
-    // setCartProducts([...cartProducts, product]);
     setCartProducts([...cartProducts, { ...product, quantity: 1 }]);
     localStorage.setItem(
       "Cart",

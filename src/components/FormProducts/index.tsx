@@ -53,7 +53,6 @@ const FormProducts = () => {
 
   const onSubmitProduct = (produto: ProductsData) => {
     registerProducts(produto);
-    console.log("Produto add", produto);
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -77,9 +76,11 @@ const FormProducts = () => {
                 Link Imagem
                 <Input
                   {...register("img")}
-                  placeholder="Link Imagem"
+                  placeholder="Link"
                   h="45px"
-                  _placeholder={{ color: "cream.300" }}
+                  _placeholder={{ color: "cream.100" }}
+                  bg='brown.200'
+                  color='cream.100'
                 />
                 <FormErrorMessage>{errors.img?.message}</FormErrorMessage>
               </FormLabel>
@@ -89,7 +90,9 @@ const FormProducts = () => {
                 <Input
                   {...register("name")}
                   placeholder="Nome"
-                  _placeholder={{ color: "cream.300" }}
+                  _placeholder={{ color: "cream.100" }}
+                  bg='brown.200'
+                  color='cream.100'
                 />
                 <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
               </FormLabel>
@@ -97,15 +100,14 @@ const FormProducts = () => {
               <FormLabel color="green.200">
                 Categoria
                 <Select
-                  placeholder="Selecione uma categoria"
-                  _placeholder={{ color: "cream.300" }}
                   {...register("category")}
+                  bg='brown.200'
                 >
-                  <option value="frutas">Frutas</option>
-                  <option value="legumes">Legumes</option>
-                  <option value="verduras">Verduras</option>
-                  <option value="artesanato">Artesanato</option>
-                  <option value="outros">Outros</option>
+                  <option style={{ backgroundColor:'#22724D' }} value="frutas">Frutas</option>
+                  <option style={{ backgroundColor:'#22724D' }} value="legumes">Legumes</option>
+                  <option style={{ backgroundColor:'#22724D' }} value="verduras">Verduras</option>
+                  <option style={{ backgroundColor:'#22724D' }} value="artesanato">Artesanato</option>
+                  <option style={{ backgroundColor:'#22724D' }} value="outros">Outros</option>
                 </Select>
                 <FormErrorMessage>{errors.category?.message}</FormErrorMessage>
               </FormLabel>
@@ -115,7 +117,9 @@ const FormProducts = () => {
                 <Input
                   {...register("price")}
                   placeholder="Preço"
-                  _placeholder={{ color: "cream.300" }}
+                  _placeholder={{ color: "cream.100" }}
+                  bg='brown.200'
+                  color='cream.100'
                 />
                 <FormErrorMessage>{errors.price?.message}</FormErrorMessage>
               </FormLabel>

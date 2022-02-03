@@ -42,7 +42,7 @@ const CardSeller = ({ name, state, id }: User) => {
           color="black"
         >
           <Box
-            fontSize="25px"
+            fontSize="21px"
             padding-bottom="2px"
             key={name}
             color="green.200"

@@ -11,6 +11,7 @@ import api from "../../services/Axios";
 
 interface ProductsContextData {
   products: ProductsData[];
+  myProducts: ProductsData[]
   registerProducts: (product: ProductsData) => void;
   editProducts: (product: ProductsData) => void;
   deleteProducts: (id: number) => void;
@@ -52,12 +53,19 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
   const [productsUserId, setProductsUserId] = useState(0);
   const token = localStorage.getItem("@ArteSana:token");
   const userId = Number(localStorage.getItem("@userId"));
+  const [myProducts, setMyProducts] = useState<ProductsData[]>([])
 
   useEffect(() => {
     api
       .get(`/products?userId=${productsUserId}`)
       .then((response) => setProducts(response.data));
   }, [productsUserId]);
+
+  useEffect(() => {
+    api
+      .get(`/products?userId=${userId}`)
+      .then((response) => setMyProducts(response.data));
+  }, [myProducts]);
 
   const getUserId = (id: number) => {
     setProductsUserId(id);
@@ -74,15 +82,6 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
       .catch((err) => console.error(err));
   }, []);
 
-  // useEffect(() => {
-  //   api
-  //     .get("/users", {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((response) => setSellers(response.data));
-  // }, [token]);
 
   const registerProducts = (product: ProductsData) => {
     const { name, category, price, img, id } = product;
@@ -115,7 +114,6 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 
   const editProducts = (product: ProductsData) => {
     const body = { ...product, userId };
-    console.log(body);
     api
       .patch(`/products/${product.id}`, body, {
         headers: {
@@ -179,6 +177,7 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
         sellers,
         getSellers,
         getUserId,
+        myProducts
       }}
     >
       {children}

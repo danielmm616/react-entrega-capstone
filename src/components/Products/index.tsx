@@ -1,6 +1,5 @@
 import { useProducts } from "../../Providers/ProductsContext";
 import { useCart } from "../../Providers/CartContext";
-// import ButtonC from "../ButtonC"
 
 import { Box, Image, Flex, Stat, StatNumber, Button } from "@chakra-ui/react";
 

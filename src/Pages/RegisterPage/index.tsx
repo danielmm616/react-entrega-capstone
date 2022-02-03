@@ -55,7 +55,6 @@ const RegisterPage = () => {
     delete user.confirmPassword;
     const newUser = { ...user, seller: false };
     registerUser(newUser);
-    console.log("onSubFunc user", user);
   };
 
   if (token) {

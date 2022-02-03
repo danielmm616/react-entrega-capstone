@@ -32,7 +32,7 @@ interface ProductsData {
 }
 
 const ProdutsEdits = () => {
-  const { products, editProducts, deleteProducts } = useProducts();
+  const { myProducts, editProducts, deleteProducts } = useProducts();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -60,7 +60,7 @@ const ProdutsEdits = () => {
         maxW="1000px"
         data-testid="productsEdits-element"
       >
-        {products.map((produto) => (
+        {myProducts.map((produto) => (
           <Box
             background="#E5E5E5"
             boxShadow="7px 7px 7px 0px rgba(0,0,0,0.22)"
@@ -111,10 +111,11 @@ const ProdutsEdits = () => {
                         Link Imagem
                         <Input
                           {...register("img")}
-                          placeholder={produto.img}
-                          value={produto.img}
+                          placeholder='Link'
                           h="45px"
-                          _placeholder={{ color: "cream.400" }}
+                          _placeholder={{ color: "cream.100" }}
+                          bg='brown.200'
+                          color='cream.100'
                         />
                         <FormErrorMessage>
                           {errors.img?.message}
@@ -125,8 +126,10 @@ const ProdutsEdits = () => {
                         Nome do Produto
                         <Input
                           {...register("name")}
-                          placeholder={produto.name}
-                          _placeholder={{ color: "cream.400" }}
+                          placeholder='Produto'
+                          _placeholder={{ color: "cream.100" }}
+                          bg='brown.200'
+                          color='cream.100'
                         />
                         <FormErrorMessage>
                           {errors.name?.message}
@@ -136,15 +139,14 @@ const ProdutsEdits = () => {
                       <FormLabel color="green.200">
                         Categoria
                         <Select
-                          placeholder="Selecione uma categoria"
-                          _placeholder={{ color: "cream.400" }}
                           {...register("category")}
+                          bg='brown.200'
                         >
-                          <option value="frutas">Frutas</option>
-                          <option value="legumes">Legumes</option>
-                          <option value="verduras">Verduras</option>
-                          <option value="artesanato">Artesanato</option>
-                          <option value="outros">Outros</option>
+                          <option style={{ backgroundColor:'#22724D' }} value="frutas">Frutas</option>
+                          <option style={{ backgroundColor:'#22724D' }} value="legumes">Legumes</option>
+                          <option style={{ backgroundColor:'#22724D' }} value="verduras">Verduras</option>
+                          <option style={{ backgroundColor:'#22724D' }} value="artesanato">Artesanato</option>
+                          <option style={{ backgroundColor:'#22724D' }} value="outros">Outros</option>
                         </Select>
                         <FormErrorMessage>
                           {errors.category?.message}
@@ -158,7 +160,9 @@ const ProdutsEdits = () => {
                           {...register("price")}
                           type="number"
                           placeholder="preço"
-                          _placeholder={{ color: "cream.400" }}
+                          _placeholder={{ color: "cream.100" }}
+                          bg='brown.200'
+                          color='cream.100'
                         />
                         <FormErrorMessage>
                           {errors.price?.message}

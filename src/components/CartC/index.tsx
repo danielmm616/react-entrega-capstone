@@ -20,7 +20,6 @@ interface CartCProps {
 const CartC = ({ list }: CartCProps) => {
   const history = useHistory();
   const { cart } = useCart();
-  console.log(cart);
 
   return (
     <Box
