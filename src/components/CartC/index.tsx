@@ -26,7 +26,8 @@ const CartC = ({ list }: CartCProps) => {
       display={["none", "none", "none", "inherit"]}
       position="fixed"
       left="70vw"
-      bottom="5vh"
+      top='50%'
+      transform='translateY(-50%)'
     >
       <Box
         color="white"

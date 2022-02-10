@@ -30,6 +30,10 @@ const ProductAddToCart = () => {
             key={produto.name}
             color="green.200"
             fontWeight={800}
+            _hover={{
+              transform: "scale(1.05)",
+              transition: "0.3s",
+            }}
           >
             {produto.name}
             <Box display="flex" justifyContent="center" alignItems="center">

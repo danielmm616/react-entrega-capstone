@@ -60,7 +60,7 @@ const FormProducts = () => {
   return (
     <>
       <HeaderC />
-      <Text fontWeight="700" m="5px" padding="5px" fontSize="25px">
+      <Text fontWeight="600" m="5px" padding="5px" fontSize="3xl">
         Meus Produtos &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <ButtonC onClick={onOpen} bg="green.200" text="+" />
       </Text>

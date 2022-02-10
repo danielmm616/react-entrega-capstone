@@ -23,7 +23,7 @@ const Seller = () => {
   return (
     <>
       <HeaderC />
-      <Text fontSize="3xl" mt="10px">
+      <Text fontWeight="600" fontSize="3xl" mt="10px">
         Escolha seu artesão
       </Text>
       <Flex w="95vw" mt="10px" alignItems="center">

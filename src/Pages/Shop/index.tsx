@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import CartC from "../../components/CartC";
 import HeaderC from "../../components/HeaderC";
 import ProductAddToCart from "../../components/Products";
@@ -16,6 +16,9 @@ const Shop = () => {
   return (
     <>
       <HeaderC />
+      <Text fontWeight="600" fontSize="3xl" mt="10px">
+        Escolha seus produtos
+      </Text>
 
       <Flex w="95vw" mt="10px" alignItems="center">
         <Flex

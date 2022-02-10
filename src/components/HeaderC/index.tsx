@@ -22,6 +22,8 @@ const HeaderC = () => {
       alignItems="center"
       wrap="wrap"
       data-testid="header-element"
+      background="linear-gradient(0deg, rgba(34,114,77,1) 0%, rgba(67,54,51,1) 42.5%);"
+      boxShadow="1px 0px 20px -1px rgba(0,0,0,0.75)"
     >
       <Box display={"flex"} h="100%" alignItems={"center"} wrap="wrap">
         <Flex
@@ -55,25 +57,26 @@ const HeaderC = () => {
         justifyContent="space-around"
         marginBottom="10px"
       >
-        <Icon
-          as={BsCart3}
-          fontSize="40px"
-          color="cream.100"
-          cursor="pointer"
-          onClick={() => history.push("/cart")}
-          _hover={{ transform: "scale(1.1)", transition: "0.5s" }}
-        />
-        {cart.length > 0 && (
-          <Text
-            bg={"green.200"}
-            h="20px"
-            w="20px"
-            borderRadius={"100%"}
-            marginLeft={"-40px"}
-          >
-            {cart.length}
-          </Text>
-        )}
+        <Flex w="40px" _hover={{ transform: "scale(1.1)", transition: "0.5s" }}>
+          <Icon
+            as={BsCart3}
+            fontSize="40px"
+            color="cream.100"
+            cursor="pointer"
+            onClick={() => history.push("/cart")}
+          />
+          {cart.length > 0 && (
+            <Text
+              bg={"green.200"}
+              h="20px"
+              w="20px"
+              borderRadius={"100%"}
+              marginLeft={"-20px"}
+            >
+              {cart.length}
+            </Text>
+          )}
+        </Flex>
         <Icon
           as={MdOutlineSell}
           fontSize="40px"

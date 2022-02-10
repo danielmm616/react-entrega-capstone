@@ -78,7 +78,10 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
           Authorization: `Bearer ${accessToken}`,
         },
       })
-      .then((response) => setSellers(response.data))
+      .then((response) => {
+        const removeSelf = response.data.filter((seller: SellersData) => seller.id !== userId)
+        setSellers(removeSelf)
+      })
       .catch((err) => console.error(err));
   }, []);
 
